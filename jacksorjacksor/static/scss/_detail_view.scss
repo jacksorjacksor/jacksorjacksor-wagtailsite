@@ -1,0 +1,33 @@
+.main-title {
+    @include flex-column-center-center;
+    &.detail-view {
+        text-align: center;
+        padding-top: 3rem;
+        a {
+            @include hover-transition-to-black-transparent;
+        }
+    }
+}
+
+// HERO SECTION
+
+.detail-section {
+    .detail-container {
+        padding: 0 3rem;
+    }
+    padding-bottom: 3rem;
+}
+
+.back-home {
+    text-align: center;
+    font-size: 3rem;
+    padding: 2rem;
+}
+
+.divider {
+    width: 50vw;
+    margin: auto;
+    height: 1px;
+    background-color: var(--dark-color);
+    margin-bottom: 2rem;
+}
