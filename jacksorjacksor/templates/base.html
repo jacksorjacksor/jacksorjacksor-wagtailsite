@@ -15,22 +15,20 @@
         <link
             rel="stylesheet"
             type="text/css"
-            href="{% static 'css/jacksorjacksor.css' %}"
+            href="{% static 'css/style.min.css' %}"
         />
 
-        {% block extra_css %} {# Override this in templates to add extra
-        stylesheets #} {% endblock %}
+        {% block extra_css %} {% endblock %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %} {% block content %}{% endblock %} {# Global
-        javascript #}
+        {% wagtailuserbar %} {% include "navbar.html" %} {% block content %}{%
+        endblock %}
         <script
             type="text/javascript"
-            src="{% static 'js/jacksorjacksor.js' %}"
+            src="{% static 'js/script.js' %}"
         ></script>
 
-        {% block extra_js %} {# Override this in templates to add extra
-        javascript #} {% endblock %}
+        {% block extra_js %} {% endblock %}
     </body>
 </html>

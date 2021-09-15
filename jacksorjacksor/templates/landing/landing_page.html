@@ -1,5 +1,46 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-<h1>CONGRATULATIONS!!!</h1>
+<!-- CONTENT -->
+<section class="landing" id="landing">
+    <div class="music-landing landing-card">
+        <div class="site-name">
+            <h1>jacksor</h1>
+        </div>
+        <div class="header landing-page-link">
+            <a href="music-list-view-page.html">
+                <p>music</p>
+            </a>
+        </div>
+
+        <div class="icon landing-page-link">
+            <a href="music-list-view-page.html"
+                ><i class="fas fa-arrow-up"></i
+            ></a>
+        </div>
+        <div class="icon landing-page-link">
+            <a href="music-list-view-page.html"><i class="fas fa-music"></i></a>
+        </div>
+    </div>
+    <div class="tech-landing">
+        <div class="site-name">
+            <h1>jacksor</h1>
+        </div>
+
+        <div class="header landing-page-link">
+            <a href="tech-list-view-page.html">
+                <p>tech</p>
+            </a>
+        </div>
+
+        <div class="icon landing-page-link">
+            <i class="fas fa-arrow-down"></i>
+        </div>
+        <div class="icon landing-page-link">
+            <a href="tech-list-view-page.html"
+                ><i class="fas fa-laptop-code"></i
+            ></a>
+        </div>
+    </div>
+</section>
 
 {% endblock content %}
