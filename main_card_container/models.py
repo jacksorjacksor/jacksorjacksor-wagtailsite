@@ -98,6 +98,8 @@ class DetailPage(Page):
         related_name="+",
     )
 
+    description = models.CharField(max_length=255, blank=True, null=True)
+
     body = StreamField(BodyBlock(), blank=True)
 
     tags = ClusterTaggableManager(through="main_card_container.DetailPageTag", blank=True)
@@ -108,6 +110,7 @@ class DetailPage(Page):
 
     content_panels = Page.content_panels + [
         ImageChooserPanel("header_image"),
+        FieldPanel("description"),
         StreamFieldPanel("body"),
         InlinePanel("categories", label="categories"),
         FieldPanel("hero_content_bool"),

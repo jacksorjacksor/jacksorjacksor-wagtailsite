@@ -1,5 +1,13 @@
-{% load wagtailcore_tags debugger_tags %}
+{% extends "base.html" %}
 
+{% load static wagtailcore_tags wagtailimages_tags debugger_tags %} 
+
+{% block body_class %}
+{% comment %} This ends up being the Discipline of the list page{% endcomment %}
+{% endblock %}
+
+{% comment %} 
+Sample:
 <h1>{{ page.title }}</h1>
 <div class="intro">{{ page.description }}</div>
 {% for post in page.get_children %}
@@ -9,6 +17,89 @@
         </a>
     </h2>
     <p>
-        {{ post.body |richtext }}
+        {{ post.body | richtext }}
     </p>
-{% endfor %}
+{% endfor %} 
+{% endcomment %}
+
+{% block content %}
+        <header>
+            <div class="main-title">
+                <h1>{{ page.title }}</h1>
+
+                <p class="subtitle">
+                    {{ page.description }}
+                </p>
+            </div>
+        </header>
+
+        <!-- CATEGORY -->
+        {% comment %} <section class="category">
+            <div class="category-container">
+                <div class="category-card category-recordings">
+                    <a href="music-list-filter-recordings-page.html">
+                        <div class="category-title">recordings</div>
+                        <div class="category-icon">
+                            <i class="fas fa-record-vinyl"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section> {% endcomment %}
+        <!-- HERO -->
+        {% comment %} 
+            Hero removed for now, need to look at adjusting the 
+            CSS so that the items & hero are the same, but for 
+            the additional 'hero' class.
+         {% endcomment %}
+
+{% comment %} 
+{% for post in page.get_children %}
+    <h2>
+        <a href="{% pageurl post %}">
+            {{ post.title }}
+        </a>
+    </h2>
+    <p>
+        {{ post.body | richtext }}
+    </p>
+{% endfor %}  
+{% endcomment %}
+
+        <!-- ITEMS -->
+        <section class="items">
+            <div class="item-container">
+                {% for card in page.get_children.specific %}
+                {{ card | pdb}}
+                    <div class="item-card">
+                    {% for cat in page.categories.all %}
+                    <h1>{{ card.card_category.name }}</h1>
+                    {% endfor %}
+                        <a href="music-detail-view-recordings-page.html">
+                            <div class="item-title">{{ card.title }}</div>
+                            <div class="item-image-wrapper">
+                            {% image card.header_image original as temp_image %}
+                                <img
+                                    class="item-image"
+                                    src="{{temp_image.url}}"
+                                    alt="{{temp_image.alt}}"
+                                />
+                                <div class="item-category">
+                                    <i class="fas fa-record-vinyl"></i>
+                                </div>
+                            </div>
+                            <div class="item-date-label">
+                                <p><small>{{ card.last_published_at}}</small></p>
+                            </div>
+                            <div class="item-description">
+                                {{ card.description }}
+                            </div>
+                        </a>
+                    </div>                
+                {% endfor %}
+            </div>
+        </section>
+
+{% comment %} Do need to make a footer {% endcomment %}
+
+{% endblock content %}
