@@ -35,4 +35,4 @@ michaelyin@accordbox.com
 
 ## 7.4
 
--   `typing_extensions` needs to be included
+-   `typing_extensions` needs to be included & installed (`pip install typing_extensions` etc.)

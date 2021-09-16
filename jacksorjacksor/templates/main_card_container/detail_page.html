@@ -6,12 +6,10 @@
 
 {% include "main_card_container/components/streamfield.html" %}
 
-
-
 <h3>Categories</h3>
 <ul>
-    {% for cat in page.categories.all %}
-        <li> {{cat.categories.name }}</li>
+    {% for cat in page.categories.all %} 
+        <li> {{cat.card_category }}</li>
     {% endfor %}
 </ul>
 

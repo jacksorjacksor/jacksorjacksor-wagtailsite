@@ -48,6 +48,7 @@ class CardCategory(models.Model):
         on_delete=models.SET_NULL,
         related_name="+",
     )
+    icon = models.CharField(max_length=255, null=True, blank=True)
     slug = models.SlugField(
         # could this be self.name? Or just name.. it's a SlugField, that's the only difference.
         unique=True,
@@ -57,6 +58,7 @@ class CardCategory(models.Model):
     panels = [
         FieldPanel("name"),
         FieldPanel("discipline"),
+        FieldPanel("icon"),
         FieldPanel("slug"),
     ]
 
@@ -100,16 +102,22 @@ class DetailPage(Page):
 
     tags = ClusterTaggableManager(through="main_card_container.DetailPageTag", blank=True)
 
+    hero_content_bool = models.BooleanField(default=False, blank=False, null=False)
+
+    hero_super_title = models.CharField(max_length=255, blank=True, null=True)
+
     content_panels = Page.content_panels + [
         ImageChooserPanel("header_image"),
-        InlinePanel("categories", label="categories"),
-        FieldPanel("tags"),
         StreamFieldPanel("body"),
+        InlinePanel("categories", label="categories"),
+        FieldPanel("hero_content_bool"),
+        FieldPanel("hero_super_title"),
+        FieldPanel("tags"),
     ]
 
 
 ## Intermediary models
-class DetailPageListCategory(models.Model):
+class DetailPageCategory(models.Model):
     page = ParentalKey("main_card_container.DetailPage", on_delete=models.CASCADE, related_name="categories")
     card_category = models.ForeignKey(
         "main_card_container.CardCategory", on_delete=models.CASCADE, related_name="card_pages"
