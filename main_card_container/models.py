@@ -5,7 +5,7 @@ from django.db.models.fields import Field
 ## Content
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
-from .blocks import BodyBlock
+from wagtail_utils.blocks import BodyBlock
 
 ## Admin / Edit Handlers
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel

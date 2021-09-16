@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "main_card_container",
     "django_extensions",
     "typing_extensions",
+    "generic_page",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
