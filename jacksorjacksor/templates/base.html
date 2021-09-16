@@ -22,8 +22,14 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
-        {% wagtailuserbar %} {% include "navbar.html" %} {% block content %}{%
-        endblock %}
+
+        {% wagtailuserbar %} 
+        {% block navbar %}
+            {% include "navbar.html" %} 
+        {% endblock %}
+
+        {% block content %}{% endblock %}
+
         <script
             type="text/javascript"
             src="{% static 'js/script.js' %}"
