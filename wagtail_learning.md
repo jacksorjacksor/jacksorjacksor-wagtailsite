@@ -73,3 +73,21 @@ class FooPage(Page):
         related_name='+',
     )
 ```
+
+## DJANGO BLOCK RECURSION
+
+-   "main" imported "navbar"
+-   "navbar" was wrapped in a block tag
+-   import statement in "main" wasn't
+-   caused a recursion error
+-   lol
+
+---
+
+Then bought the "build blog with wagtail" book
+Prettier isn't working on Python files
+Have now installed Black and have replaced that as the default.
+
+Add "related pages" at bottom of page:
+
+> In my opinion it’s a better user experience to present a link to a relevant article than to send a user to a page of links. - https://www.searchenginejournal.com/google-john-mueller-tags-seo/396114/#close
