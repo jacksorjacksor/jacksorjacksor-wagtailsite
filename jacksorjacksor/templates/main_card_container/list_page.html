@@ -70,11 +70,11 @@ Sample:
         <section class="items">
             <div class="item-container">
                 {% for card in page.get_children.specific %}
-                {{ card | pdb}}
-                    <div class="item-card">
-                    {% for cat in page.categories.all %}
-                    <h1>{{ card.card_category.name }}</h1>
+                {% comment %} {{ card | pdb}} {% endcomment %}
+                    {% for cat in card.categories.all() %}
+                        {{ cat.category.title }}
                     {% endfor %}
+                    <div class="item-card">
                         <a href="music-detail-view-recordings-page.html">
                             <div class="item-title">{{ card.title }}</div>
                             <div class="item-image-wrapper">

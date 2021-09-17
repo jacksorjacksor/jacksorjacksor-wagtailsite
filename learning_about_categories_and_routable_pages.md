@@ -28,25 +28,6 @@
         -   Snippet (Category)
         -   Intermediary (DetailPageCategory)
 
-## Accessing the category name:
-
-```python
-
-from wagtail
-
-
-
-
-
-
-
-
-
-
-
-
-```
-
 ## Learning sources
 
 -   accordbox

@@ -22,32 +22,10 @@ from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from modelcluster.tags import ClusterTaggableManager
 from wagtail.admin.edit_handlers import InlinePanel
 
-# MODELS
-## Categories & Tags
-@register_snippet
-class Discipline(models.Model):
-    name = models.CharField(max_length=255)
-
-    panels = [FieldPanel("name")]
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Discipline"
-        verbose_name_plural = "Disciplines"
-
 
 @register_snippet
-class CardCategory(models.Model):
-    name = models.CharField(max_length=255)
-    discipline = models.ForeignKey(
-        Discipline,
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
+class Category(models.Model):
+    title = models.CharField(max_length=255)
     icon = models.CharField(max_length=255, null=True, blank=True)
     slug = models.SlugField(
         # could this be self.name? Or just name.. it's a SlugField, that's the only difference.
@@ -56,25 +34,17 @@ class CardCategory(models.Model):
     )
 
     panels = [
-        FieldPanel("name"),
-        FieldPanel("discipline"),
+        FieldPanel("title"),
         FieldPanel("icon"),
         FieldPanel("slug"),
     ]
 
     def __str__(self):
-        return self.name
+        return self.title
 
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"
-
-
-@register_snippet
-class Tag(TaggitTag):
-    # since Wagtail already has tag support built on django-taggit, so here we create a proxy-model to declare it as wagtail snippet
-    class Meta:
-        proxy = True
 
 
 ## Pages
@@ -102,8 +72,6 @@ class DetailPage(Page):
 
     body = StreamField(BodyBlock(), blank=True)
 
-    tags = ClusterTaggableManager(through="main_card_container.DetailPageTag", blank=True)
-
     hero_content_bool = models.BooleanField(default=False, blank=False, null=False)
 
     hero_super_title = models.CharField(max_length=255, blank=True, null=True)
@@ -115,25 +83,20 @@ class DetailPage(Page):
         InlinePanel("categories", label="categories"),
         FieldPanel("hero_content_bool"),
         FieldPanel("hero_super_title"),
-        FieldPanel("tags"),
     ]
 
 
 ## Intermediary models
 class DetailPageCategory(models.Model):
     page = ParentalKey("main_card_container.DetailPage", on_delete=models.CASCADE, related_name="categories")
-    card_category = models.ForeignKey(
-        "main_card_container.CardCategory", on_delete=models.CASCADE, related_name="card_pages"
+    category = models.ForeignKey(
+        "main_card_container.Category", on_delete=models.CASCADE, related_name="category", blank="True", null="True"
     )
 
-    panels = [SnippetChooserPanel("card_category")]
+    panels = [SnippetChooserPanel("category")]
 
     class Meta:
         unique_together = (
             "page",
-            "card_category",
+            "category",
         )  # https://docs.djangoproject.com/en/3.2/ref/models/options/#unique-together
-
-
-class DetailPageTag(TaggedItemBase):
-    content_object = ParentalKey("DetailPage", related_name="detail_tags")
