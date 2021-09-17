@@ -4,20 +4,48 @@
 
 -   Create Categories for the site. These can:
 
-    -   be assigned to any ListPage
-    -   the category can be printable to any page displaying the ListPage
+    -   be assigned to any DetailPage
+    -   the category can be printable to any page displaying the DetailPage
         -   i.e. {{ list_page.category }} should work!
     -   can be used for routable pages
-        -   i.e. /detail-page/<category>/ can work as a filter
+        -   i.e. /list_page/<category>/ can work as a filter
     -   make a "category_block" which can be imported into the relevant pages
     -   be able to filter this "category_block" and visually represent this
-        -   i.e. /detail-page/category-1/ will show 'category-1' is the 'active' category
+        -   i.e. /list_page/category-1/ will show 'category-1' is the 'active' category
 
 -   Plan
+
     -   Go through yesterday's code, remove instances of "tags" as we don't care about them
-    -   Re-read through the process to make the Categories
+
+    *   Re-read through the process to make the Categories
         -   Be _very clear_ on how these are made and what the process is around them
-    -   Assess from there
+    *   Assess from there
+
+## Results
+
+    -   Understanding much more clear about relationship between:
+        -   Page (DetailPage)
+        -   Snippet (Category)
+        -   Intermediary (DetailPageCategory)
+
+## Accessing the category name:
+
+```python
+
+from wagtail
+
+
+
+
+
+
+
+
+
+
+
+
+```
 
 ## Learning sources
 
@@ -41,3 +69,8 @@
 -   learnwagtail.com
 
     -   "Adding Debug Tools": https://learnwagtail.com/wagtail-for-beginners/adding-debug-tools/
+
+## Asides
+
+-   Git icon!!! Still the AA!
+-   Next page in the Admin for child pages specifically?
