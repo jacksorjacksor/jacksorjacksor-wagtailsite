@@ -1,4 +1,23 @@
-#
+# How to tackle the "Categories" section
+
+## Goals
+
+-   Create Categories for the site. These can:
+
+    -   be assigned to any ListPage
+    -   the category can be printable to any page displaying the ListPage
+        -   i.e. {{ list_page.category }} should work!
+    -   can be used for routable pages
+        -   i.e. /detail-page/<category>/ can work as a filter
+    -   make a "category_block" which can be imported into the relevant pages
+    -   be able to filter this "category_block" and visually represent this
+        -   i.e. /detail-page/category-1/ will show 'category-1' is the 'active' category
+
+-   Plan
+    -   Go through yesterday's code, remove instances of "tags" as we don't care about them
+    -   Re-read through the process to make the Categories
+        -   Be _very clear_ on how these are made and what the process is around them
+    -   Assess from there
 
 ## Learning sources
 
@@ -17,7 +36,8 @@
     -   "Create a Navigation System from Scratch": https://learnwagtail.com/wagtail-for-beginners/create-navigation-system-scratch/
     -   "Navigation Templates": https://learnwagtail.com/wagtail-for-beginners/navigation-templates/
 
-## Helpful tutorials to check out
+## Helpful tutorials to check out later
 
 -   learnwagtail.com
+
     -   "Adding Debug Tools": https://learnwagtail.com/wagtail-for-beginners/adding-debug-tools/
