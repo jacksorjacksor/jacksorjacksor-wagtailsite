@@ -2,9 +2,7 @@
 
 {% load static wagtailcore_tags wagtailimages_tags debugger_tags quick_tag category_tag wagtailroutablepage_tags %} 
 
-{% block body_class %}
-{# This ends up being the Discipline of the list page #}
-{% endblock %}
+{% block body_class %}{{ page.title | lower }}{% endblock %}
 
 {% block content %}
     <header>
