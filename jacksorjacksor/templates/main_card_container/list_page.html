@@ -16,34 +16,80 @@
 
     {% categories_list %}
 
+
+    <!-- HERO -->
+    {% for hero in posts  %}
+        {% if hero.hero_content_bool %}
+            {% image hero.header_image original as hero_image %}
+            <!-- HERO -->
+            <section class="hero-section">
+                <div class="hero-container">
+                    <a
+                        href="music-detail-view-recordings-page.html"
+                        class="hero-link"
+                    >
+                        <div class="hero-inner-container">
+                            <div class="hero-latest-release">
+                                <p>{{ hero.hero_super_title }}</p>
+                            </div>
+                            <div class="hero-title"><h2>{{ hero.title }}</h2></div>
+                            
+                                <div class="hero-image">
+                                <img
+                                    class="item-image"
+                                    src="{{hero_image.url}}"
+                                    alt="{{hero_image.alt}}"
+                                />
+                                {% for cat in hero.categories.all %}
+                                    <div class="category">
+                                        <i class="fas fa-{{cat.category.icon}}"></i>
+                                    </div>
+                                {% endfor %}
+                            
+                            </div>
+                            <div class="hero-date-label">
+                                <p><small>{{ hero.last_published_at }}</small></p>
+                            </div>
+                            <div class="hero-description">
+                                {{ hero.description }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        {% endif %}
+    {% endfor %}
+
     <!-- ITEMS -->
     <section class="items">
         <div class="item-container">
             {% for card in posts %}
-                {% image card.header_image original as card_image %}
-                <div class="item-card">
-                    <a href="music-detail-view-recordings-page.html">
-                        <div class="item-title">{{ card.title }}</div>
-                        <div class="item-image-wrapper">
-                            <img
-                                class="item-image"
-                                src="{{card_image.url}}"
-                                alt="{{card_image.alt}}"
-                            />
-                            {% for cat in card.categories.all %}
-                                <div class="item-category">
-                                    <i class="fas fa-{{cat.category.icon}}"></i>
-                                </div>
-                            {% endfor %}
-                        </div>
-                        <div class="item-date-label">
-                            <p><small>{{ card.last_published_at}}</small></p>
-                        </div>
-                        <div class="item-description">
-                            <p>{{ card.description }}</p>
-                        </div>
-                    </a>
-                </div>                
+                {% if not card.hero_content_bool %}
+                    {% image card.header_image original as card_image %}
+                    <div class="item-card">
+                        <a href="music-detail-view-recordings-page.html">
+                            <div class="item-title">{{ card.title }}</div>
+                            <div class="item-image-wrapper">
+                                <img
+                                    class="item-image"
+                                    src="{{card_image.url}}"
+                                    alt="{{card_image.alt}}"
+                                />
+                                {% for cat in card.categories.all %}
+                                    <div class="item-category">
+                                        <i class="fas fa-{{cat.category.icon}}"></i>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="item-date-label">
+                                <p><small>{{ card.last_published_at}}</small></p>
+                            </div>
+                            <div class="item-description">
+                                <p>{{ card.description }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endif %}             
             {% endfor %}
         </div>
     </section>
