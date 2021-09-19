@@ -23,4 +23,5 @@ def categories_list(context):
         "request": context["request"],
         "categories": categories,
         "category_to_filter": category_to_filter,
+        "list_page": context["list_page"],
     }

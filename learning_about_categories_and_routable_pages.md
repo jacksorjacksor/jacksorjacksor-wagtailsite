@@ -63,3 +63,10 @@
 
 -   Git icon!!! Still the AA!
 -   Next page in the Admin for child pages specifically?
+
+# ERRORS
+
+1. https://www.accordbox.com/blog/wagtail-tutorials-routable-page/
+
+    - "wagtail.contrib.wagtailroutablepage", does not exist => "wagtail.contrib.routable_page"
+    - as per https://docs.wagtail.io/en/stable/reference/contrib/routablepage.html

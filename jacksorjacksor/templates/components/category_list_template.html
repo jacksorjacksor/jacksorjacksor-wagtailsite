@@ -1,9 +1,13 @@
  <!-- CATEGORY -->
+{% load wagtailroutablepage_tags %}
+
+
  <section class="category">
     <div class="category-container {% if category_to_filter %}filtered-container{% endif %}">
         {% for cat in categories %}
             <div class="category-card category-{{cat.title}} {% ifequal category_to_filter cat.title %}filtered-card{% endifequal %}">
-                <a href="music-list-filter-{{cat.title}}-page.html">
+            <a href="{% routablepageurl list_page 'post_by_category' cat.title %}" >
+                {#<a href="music-list-filter-{{cat.title}}-page.html">#}
                     <div class="category-title">{{cat.title}}</div>
                     <div class="cat-icon">
                         <i class="fas fa-{{cat.icon}}"></i>
