@@ -21,6 +21,14 @@
         -   Be _very clear_ on how these are made and what the process is around them
     *   Assess from there
 
+# Step 1
+
+-   Understanding how to get the category associated with the item page
+
+# Step 2
+
+-   Let's try to make the HTML snippets of the 4 grid box (in the PDF)
+
 ## Results
 
     -   Understanding much more clear about relationship between:
