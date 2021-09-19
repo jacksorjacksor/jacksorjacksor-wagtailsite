@@ -14,7 +14,13 @@ register = Library()  # ??
 @register.inclusion_tag("components/category_list_template.html", takes_context=True)
 def categories_list(context):
     categories = Category.objects.all()
+    try:
+        if context["category"]:
+            category_to_filter = context["category"]
+    except:
+        category_to_filter = None
     return {
         "request": context["request"],
         "categories": categories,
+        "category_to_filter": category_to_filter,
     }

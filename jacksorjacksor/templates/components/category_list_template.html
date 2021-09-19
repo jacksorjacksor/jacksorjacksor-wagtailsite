@@ -1,12 +1,12 @@
  <!-- CATEGORY -->
  <section class="category">
-    <div class="category-container">
-        {% for category in categories %}
-            <div class="category-card category-{{category.title}}}}">
-                <a href="music-list-filter-{{category.title}}-page.html">
-                    <div class="category-title">{{category.title}}</div>
-                    <div class="category-icon">
-                        <i class="fas fa-record-vinyl"></i>
+    <div class="category-container {% if category_to_filter %}filtered-container{% endif %}">
+        {% for cat in categories %}
+            <div class="category-card category-{{cat.title}} {% ifequal category_to_filter cat.title %}filtered-card{% endifequal %}">
+                <a href="music-list-filter-{{cat.title}}-page.html">
+                    <div class="category-title">{{cat.title}}</div>
+                    <div class="cat-icon">
+                        <i class="fas fa-{{cat.icon}}"></i>
                     </div>
                 </a>
             </div>

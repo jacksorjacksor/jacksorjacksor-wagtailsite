@@ -1,11 +1,13 @@
-# IMPORTS
+# Django
 from django.db import models
-from django.db.models.fields import Field
 
 ## Content
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
 from wagtail_utils.blocks import BodyBlock
+
+# Routable Pages
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 
 ## Admin / Edit Handlers
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
@@ -48,7 +50,7 @@ class Category(models.Model):
 
 
 ## Pages
-class ListPage(Page):
+class ListPage(RoutablePageMixin, Page):
     description = models.CharField(
         max_length=255,
         blank=True,
@@ -57,6 +59,30 @@ class ListPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("description", classname="full"),
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(ListPage, self).get_context(request, *args, **kwargs)
+        context["list_page"] = self
+        context["posts"] = self.posts
+        try:
+            context["category"] = self.category
+        except:
+            pass
+        return context
+
+    def get_posts(self):
+        return DetailPage.objects.descendant_of(self).live()
+
+    @route(r"(?P<category>[-\w]+)/$")
+    def post_by_category(self, request, category, *args, **kwargs):
+        self.posts = self.get_posts().filter(categories__category__title=category)
+        self.category = category
+        return self.render(request)
+
+    @route(r"^$")
+    def post_list(self, request, *args, **kwargs):
+        self.posts = self.get_posts()
+        return self.render(request)
 
 
 class DetailPage(Page):
