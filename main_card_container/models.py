@@ -30,7 +30,6 @@ class Category(models.Model):
     title = models.CharField(max_length=255)
     icon = models.CharField(max_length=255, null=True, blank=True)
     slug = models.SlugField(
-        # could this be self.name? Or just name.. it's a SlugField, that's the only difference.
         unique=True,
         max_length=80,
     )
@@ -75,10 +74,14 @@ class ListPage(RoutablePageMixin, Page):
         max_length=255,
         blank=True,
     )
-
-    content_panels = Page.content_panels + [
-        FieldPanel("description", classname="full"),
-    ]
+    discipline = models.ForeignKey(
+        "main_card_container.Discipline",
+        on_delete=models.SET_NULL,
+        related_name="discipline_of_list_page",
+        blank="True",
+        null="True",
+    )
+    content_panels = Page.content_panels + [FieldPanel("description", classname="full"), FieldPanel("discipline")]
 
     def get_context(self, request, *args, **kwargs):
         context = super(ListPage, self).get_context(request, *args, **kwargs)

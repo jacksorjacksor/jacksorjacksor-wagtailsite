@@ -1,16 +1,20 @@
-{% load wagtailcore_tags wagtailimages_tags  %}
+{% extends "base.html" %}
 
-<h1>{{ page.title }}</h1>
+{% load static wagtailcore_tags wagtailimages_tags debugger_tags quick_tag category_tag wagtailroutablepage_tags %} 
 
-{% image page.header_image original %}
+{% block body_class %}{{ page.title | lower }}{% endblock %}
 
-{% include "components/streamfield.html" %}
+{% block content %}
+    <header>
+        <div class="main-title">
+            <h1><a href="{% routablepageurl list_page "post_list" %}">{{ page.title }}</a></h1>
+            <p class="subtitle">
+                {{ page.description }}
+            </p>
+        </div>
+    </header>
+    <h1>HERE?</h1>
+    {% categories_list %}
 
-<h3>Categories</h3>
-<ul>
-    {% for cat in page.categories.all %} 
-        <li> {{cat.card_category }}</li>
-    {% endfor %}
-</ul>
-
-<p><a href="{{ page.get_parent.url }}">Return to {{ page.get_parent.title }}</a></p>
+    <h1>HERE?</h1>
+{% endblock content %}

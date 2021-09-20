@@ -8,12 +8,13 @@ Notes:
 3. You can check Custom template tags and filters
 """
 
-register = Library()  # ??
+register = Library()  # Necessary as per Django docs
 
 
 @register.inclusion_tag("components/category_list_template.html", takes_context=True)
 def categories_list(context):
-    categories = Category.objects.all()
+    # Instead of context["list_page"] this may have to be the direct child - BUT it might not be! We'll find out!
+    categories = Category.objects.filter(discipline=context["list_page"].discipline)
     try:
         if context["category"]:
             category_to_filter = context["category"]
