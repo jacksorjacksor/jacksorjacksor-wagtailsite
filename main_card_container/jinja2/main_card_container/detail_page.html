@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags debugger_tags quick_tag category_tag wagtailroutablepage_tags %} 
+
+{% block body_class %}{{ page.title | lower }}{% endblock %}
+
+{% block content %}
+
+<p>page.title = {{ page.title}}</p>
+
+<p>page.description = {{page.description }}</p>
+
+{% include_block page.body %}
+
+<p>list_page = {{ list_page }}</p>
+
+{% endblock content %}
