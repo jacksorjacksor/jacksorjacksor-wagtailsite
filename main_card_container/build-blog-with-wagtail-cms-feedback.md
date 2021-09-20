@@ -36,3 +36,12 @@ michaelyin@accordbox.com
 ## 7.4
 
 -   `typing_extensions` needs to be included & installed (`pip install typing_extensions` etc.)
+
+## 7.6 Templates
+
+{% with blocks=page.body %}
+{% with page.body as blocks %}
+
+Neither of these work. It needs to be
+
+{% with page.body as blocks %}

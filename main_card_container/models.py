@@ -96,7 +96,7 @@ class ListPage(RoutablePageMixin, Page):
     def get_posts(self):
         return DetailPage.objects.descendant_of(self).live()
 
-    @route(r"(?P<category>[-\w]+)/$")
+    @route(r"^category/(?P<category>[-\w]+)/$")
     def post_by_category(self, request, category, *args, **kwargs):
         self.posts = self.get_posts().filter(categories__category__title=category)
         self.category = category
@@ -124,6 +124,11 @@ class DetailPage(Page):
     hero_content_bool = models.BooleanField(default=False, blank=False, null=False)
 
     hero_super_title = models.CharField(max_length=255, blank=True, null=True)
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context["list_page"] = self.get_parent().specific
+        return context
 
     content_panels = Page.content_panels + [
         ImageChooserPanel("header_image"),
