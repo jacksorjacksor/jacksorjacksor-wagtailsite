@@ -30,7 +30,6 @@ class Category(models.Model):
     title = models.CharField(max_length=255)
     icon = models.CharField(max_length=255, null=True, blank=True)
     slug = models.SlugField(
-        # could this be self.name? Or just name.. it's a SlugField, that's the only difference.
         unique=True,
         max_length=80,
     )
@@ -75,10 +74,14 @@ class ListPage(RoutablePageMixin, Page):
         max_length=255,
         blank=True,
     )
-
-    content_panels = Page.content_panels + [
-        FieldPanel("description", classname="full"),
-    ]
+    discipline = models.ForeignKey(
+        "main_card_container.Discipline",
+        on_delete=models.SET_NULL,
+        related_name="discipline_of_list_page",
+        blank="True",
+        null="True",
+    )
+    content_panels = Page.content_panels + [FieldPanel("description", classname="full"), FieldPanel("discipline")]
 
     def get_context(self, request, *args, **kwargs):
         context = super(ListPage, self).get_context(request, *args, **kwargs)
@@ -93,7 +96,7 @@ class ListPage(RoutablePageMixin, Page):
     def get_posts(self):
         return DetailPage.objects.descendant_of(self).live()
 
-    @route(r"(?P<category>[-\w]+)/$")
+    @route(r"^category/(?P<category>[-\w]+)/$")
     def post_by_category(self, request, category, *args, **kwargs):
         self.posts = self.get_posts().filter(categories__category__title=category)
         self.category = category
@@ -121,6 +124,11 @@ class DetailPage(Page):
     hero_content_bool = models.BooleanField(default=False, blank=False, null=False)
 
     hero_super_title = models.CharField(max_length=255, blank=True, null=True)
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context["list_page"] = self.get_parent().specific
+        return context
 
     content_panels = Page.content_panels + [
         ImageChooserPanel("header_image"),
