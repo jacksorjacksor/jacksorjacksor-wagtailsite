@@ -6,12 +6,73 @@
 
 {% block content %}
 
-<p>page.title = {{ page.title}}</p>
+<!-- HERO -->
 
-<p>page.description = {{page.description }}</p>
+    <section class="hero-section">
+        <div class="hero-container">
+            <a
+                href="music-detail-view-recordings-page.html"
+                class="hero-link"
+            >
+                <div class="hero-inner-container">
+                    <div class="hero-latest-release"></div>
+                    <div class="hero-title"><h2>{{ page.title }}</h2></div>
+                    <div class="hero-image">
+                        {% image page.header_image fill-250x250 class="hero-image" %}
+                        {% for cat in page.categories.all %}
+                            <div class="category">
+                                <i class="fas fa-{{cat.category.icon}}"></i>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="hero-date-label">
+                        <p><small>{{page.last_published_at}}</small></p>
+                    </div>
+                    <div class="hero-description">
+                        {{ page.description }}
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
 
-{% include_block page.body %}
+    <!-- DETAILS -->
+    <section class="detail-section">
+        {% include_block page.body %}
+    </section>
+    <div class="divider"></div>
+    
+    {% categories_list %}
 
-<p>list_page = {{ list_page }}</p>
+    <section class="items">
+        <div class="item-container">
+            {% for card in posts %}
+                {% if not card.hero_content_bool %}
+                    <div class="item-card">
+                        <a href="{% pageurl card %}">
+                            <div class="item-title">{{ card.title }}</div>
+                            <div class="item-image-wrapper">
+                            {% image card.header_image fill-250x250 class="item-image" %}
+                            {% for cat in card.categories.all %}
+                                <div class="item-category">
+                                    <i class="fas fa-{{cat.category.icon}}"></i>
+                                </div>
+                            {% endfor %}
+                            </div>
+                            <div class="item-date-label">
+                                <p><small>{{ card.last_published_at}}</small></p>
+                            </div>
+                            <div class="item-date-label">
+                                <p>{{ card.description }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endif %}             
+            {% endfor %}
+        </div>
+    </section>
+    <section class="back-home">
+        <a href="music-list-view-page.html">Back to Music</a>
+    </section>
 
 {% endblock content %}

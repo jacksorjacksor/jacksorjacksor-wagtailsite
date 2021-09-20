@@ -128,6 +128,7 @@ class DetailPage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         context["list_page"] = self.get_parent().specific
+        print(self.detailpage.categories)
         return context
 
     content_panels = Page.content_panels + [
