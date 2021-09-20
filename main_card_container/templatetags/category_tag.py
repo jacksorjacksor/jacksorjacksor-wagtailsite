@@ -14,12 +14,20 @@ register = Library()  # Necessary as per Django docs
 @register.inclusion_tag("components/category_list_template.html", takes_context=True)
 def categories_list(context):
     # Instead of context["list_page"] this may have to be the direct child - BUT it might not be! We'll find out!
+
     categories = Category.objects.filter(discipline=context["list_page"].discipline)
-    try:
+    try:  # List view
         if context["category"]:
             category_to_filter = context["category"]
     except:
         category_to_filter = None
+
+    try:
+        if context["page"].categories.all()[0].category.title:
+            category_to_filter = context["page"].categories.all()[0].category.title
+    except:
+        category_to_filter = None
+
     return {
         "request": context["request"],
         "categories": categories,
