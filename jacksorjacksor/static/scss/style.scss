@@ -11,21 +11,11 @@
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--light-color);
+    background: var(--primary-color);
     &,
     p,
     h1 {
         margin: 0;
-    }
-    background: var(--primary-color);
-}
-
-img {
-    height: 200px;
-    width: 200px;
-
-    &.hero-image {
-        height: 400px;
-        width: 400px;
     }
 }
 
