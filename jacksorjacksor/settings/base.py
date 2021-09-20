@@ -24,7 +24,6 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    "home",
     "search",
     "landing",
     "main_card_container",

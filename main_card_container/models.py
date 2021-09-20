@@ -34,19 +34,39 @@ class Category(models.Model):
         unique=True,
         max_length=80,
     )
+    discipline = models.ForeignKey(
+        "main_card_container.Discipline", on_delete=models.CASCADE, related_name="discipline", blank="True", null="True"
+    )
 
     panels = [
         FieldPanel("title"),
         FieldPanel("icon"),
         FieldPanel("slug"),
+        FieldPanel("discipline"),
+    ]
+
+    def __str__(self):
+        return f"{self.title} ({self.discipline.title})"
+
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+
+
+@register_snippet
+class Discipline(models.Model):
+    title = models.CharField(max_length=255)
+
+    panels = [
+        FieldPanel("title"),
     ]
 
     def __str__(self):
         return self.title
 
     class Meta:
-        verbose_name = "Category"
-        verbose_name_plural = "Categories"
+        verbose_name = "Discipline"
+        verbose_name_plural = "Disciplines"
 
 
 ## Pages
