@@ -81,18 +81,6 @@ TEMPLATES = [
             ],
         },
     },
-    {
-        "BACKEND": "django.template.backends.jinja2.Jinja2",
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "extensions": [
-                "wagtail.core.jinja2tags.core",
-                "wagtail.admin.jinja2tags.userbar",
-                "wagtail.images.jinja2tags.images",
-            ],
-            "environment": "jacksorjacksor.jinja2.environment",
-        },
-    },
 ]
 
 WSGI_APPLICATION = "jacksorjacksor.wsgi.application"

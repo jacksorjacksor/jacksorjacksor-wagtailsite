@@ -1,4 +1,4 @@
-{{ static, wagtailcore_tags, wagtailuserbar }}
+{% load static wagtailcore_tags wagtailuserbar %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -15,7 +15,7 @@
         <link
             rel="stylesheet"
             type="text/css"
-            href="{{ static('css/style.min.css') }}"
+            href="{% static 'css/style.min.css' %}"
         />
        <script
             src="https://kit.fontawesome.com/1353dfbca9.js"
@@ -33,7 +33,7 @@
 
         <script
             type="text/javascript"
-            src="{{ static('js/script.js') }}"
+            src="{% static 'js/script.js' %}"
         ></script>
 
         {% block extra_js %} {% endblock %}
