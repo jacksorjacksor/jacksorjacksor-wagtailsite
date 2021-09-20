@@ -20,7 +20,7 @@
     <!-- HERO -->
     {% for hero in posts  %}
         {% if hero.hero_content_bool %}
-            {% image hero.header_image original as hero_image %}
+            
             <!-- HERO -->
             <section class="hero-section">
                 <div class="hero-container">
@@ -34,18 +34,15 @@
                             </div>
                             <div class="hero-title"><h2>{{ hero.title }}</h2></div>
                             
-                                <div class="hero-image">
-                                <img
-                                    class="item-image"
-                                    src="{{hero_image.url}}"
-                                    alt="{{hero_image.alt}}"
-                                />
-                                {% for cat in hero.categories.all %}
-                                    <div class="category">
-                                        <i class="fas fa-{{cat.category.icon}}"></i>
-                                    </div>
-                                {% endfor %}
+                                <div class="hero-image-container">
+                                    {% image hero.header_image max-50x50 class="hero-image" %}
                             
+                                    {% for cat in hero.categories.all %}
+                                        <div class="category">
+                                            <i class="fas fa-{{cat.category.icon}}"></i>
+                                        </div>
+                                    {% endfor %}
+                                </div>
                             </div>
                             <div class="hero-date-label">
                                 <p><small>{{ hero.last_published_at }}</small></p>

@@ -1,5 +1,5 @@
 // Tablets
-@media (max-width: 800px) {
+@media (max-width: 400px) {
     // LANDING
     .navigation-list-item-site-name {
         display: none;
@@ -32,13 +32,12 @@
         @include flex-column-center-center;
     }
 
-    .items .item-container {
-        grid-template-columns: repeat(1, 1fr);
+    .hero-title {
+        text-align: center;
     }
 
-    img.hero-img {
-        width: 230px;
-        height: 230px;
+    .items .item-container {
+        grid-template-columns: repeat(1, 1fr);
     }
 
     // FILTER
