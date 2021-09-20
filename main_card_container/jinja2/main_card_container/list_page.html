@@ -25,7 +25,7 @@
             <section class="hero-section">
                 <div class="hero-container">
                     <a
-                        href="{% pageurl hero %}"
+                        href="{{ pageurl(hero) }}"
                         class="hero-link"
                     >
                         <div class="hero-inner-container">
@@ -34,7 +34,7 @@
                             </div>
                             <div class="hero-title"><h2>{{ hero.title }}</h2></div>
                                 <div class="hero-image-container">
-                                    {% image hero.header_image fill-250x250 class="hero-image" %}
+                                    {{ image(hero.header_image, "fill-250x250", class="hero-image") }}
                             
                                     {% for cat in hero.categories.all %}
                                         <div class="category">
@@ -62,10 +62,10 @@
             {% for card in posts %}
                 {% if not card.hero_content_bool %}
                     <div class="item-card">
-                        <a href="{% pageurl card %}">
+                        <a href="{{ pageurl(card) }}">
                             <div class="item-title">{{ card.title }}</div>
                             <div class="item-image-wrapper">
-                            {% image card.header_image fill-250x250 class="item-image" %}
+                            {{ image(card.header_image, "fill-250x250", class="item-image") }}
                             {% for cat in card.categories.all %}
                                 <div class="item-category">
                                     <i class="fas fa-{{cat.category.icon}}"></i>

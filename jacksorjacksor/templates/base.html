@@ -26,7 +26,7 @@
 
     <body class="{% block body_class %}{% endblock %}">
 
-        {% wagtailuserbar %} 
+        {{ wagtailuserbar() }} 
         {% block navbar %}
             {% include "navbar.html" %} 
         {% endblock %}
