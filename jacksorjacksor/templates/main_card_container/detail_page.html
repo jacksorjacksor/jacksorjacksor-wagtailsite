@@ -7,6 +7,13 @@
 {% block content %}
 
 <!-- HERO -->
+    <header>
+        <div class="main-title">
+            <h1><a href="{% routablepageurl list_page "post_list" %}">{{ list_page.title | lower }}</a> > <a href="{% routablepageurl list_page 'post_by_category' page.categories.first.category.title %}">{{ page.categories.first.category.title | lower  }}</a> > {{ page.title }}</h1>
+            
+            </h1>
+        </div>
+    </header>
 
     <section class="hero-section">
         <div class="hero-container">
@@ -69,7 +76,7 @@
         </div>
     </section>
     <section class="back-home">
-        <a href="music-list-view-page.html">Back to Music</a>
+        <a href="{% routablepageurl list_page "post_list" %}">back to {{ list_page.title | lower }}</a>
     </section>
 
 {% endblock content %}
