@@ -547,15 +547,20 @@ header .main-title a:hover {
 }
 
 .detail-body-container {
-  padding: 2rem;
-}
-
-.detail-section {
-  padding-bottom: 3rem;
-}
-
-.detail-section .detail-container {
-  padding: 0 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0rem 2rem 2rem 2rem;
 }
 
 .back-home {
