@@ -1,7 +1,9 @@
-# Goals for today
+# Remaining to-do
 
-## Mailing List integration
+## CONTENT
 
-This is actually an important thing as in many ways that's the most important thing! For right now at least :)
+### Even just lorem ipsens
 
-## Disciplines
+## CONTACT PAGE
+
+## weird logo rendering on hero in detail page
