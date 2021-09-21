@@ -546,6 +546,10 @@ header .main-title a:hover {
   opacity: 0.5;
 }
 
+.detail-body-container {
+  padding: 2rem;
+}
+
 .detail-section {
   padding-bottom: 3rem;
 }

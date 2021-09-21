@@ -19,11 +19,9 @@
                     <div class="hero-title"><h2>{{ page.title }}</h2></div>
                     <div class="hero-image">
                         {% image page.header_image fill-250x250 class="hero-image" %}
-                        {% for cat in page.categories.all %}
-                            <div class="category">
-                                <i class="fas fa-{{cat.category.icon}}"></i>
-                            </div>
-                        {% endfor %}
+                        <div class="category">
+                            <i class="fas fa-{{ page.categories.first.category.icon }}"></i>
+                        </div>
                     </div>
                     <div class="hero-date-label">
                         <p><small>{{page.last_published_at}}</small></p>
@@ -37,8 +35,8 @@
     </section>
 
     <!-- DETAILS -->
-    <section class="detail-section">
-        {% include_block page.body %}
+    <section class="detail-body-container">
+        {% include "components/streamfield.html" %}
     </section>
     <div class="divider"></div>
     
@@ -47,17 +45,16 @@
     <section class="items">
         <div class="item-container">
             {% for card in posts %}
-                {% if not card.hero_content_bool %}
+                {% ifequal card.detailpage.categories.first.category.title page.categories.first.category.title %}
+            {% comment %} {{ card | pdb }} {% endcomment %}
                     <div class="item-card">
                         <a href="{% pageurl card %}">
                             <div class="item-title">{{ card.title }}</div>
                             <div class="item-image-wrapper">
-                            {% image card.header_image fill-250x250 class="item-image" %}
-                            {% for cat in card.categories.all %}
+                                {% image card.detailpage.header_image fill-250x250 class="item-image" %}
                                 <div class="item-category">
-                                    <i class="fas fa-{{cat.category.icon}}"></i>
+                                    <i class="fas fa-{{ card.detailpage.categories.first.category.icon }}"></i>
                                 </div>
-                            {% endfor %}
                             </div>
                             <div class="item-date-label">
                                 <p><small>{{ card.last_published_at}}</small></p>
@@ -67,7 +64,7 @@
                             </div>
                         </a>
                     </div>
-                {% endif %}             
+                {% endifequal %}
             {% endfor %}
         </div>
     </section>

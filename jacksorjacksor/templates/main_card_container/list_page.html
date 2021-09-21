@@ -35,11 +35,9 @@
                                 <div class="hero-image-container">
                                     {% image hero.header_image fill-250x250 class="hero-image" %}
                             
-                                    {% for cat in hero.categories.all %}
-                                        <div class="category">
-                                            <i class="fas fa-{{cat.category.icon}}"></i>
-                                        </div>
-                                    {% endfor %}
+                                    <div class="category">
+                                        <i class="fas fa-{{hero.categories.first.category.icon}}"></i>
+                                    </div>
                                 </div>
                                 <div class="hero-date-label">
                                     <p><small>{{ hero.last_published_at }}</small></p>
@@ -64,12 +62,10 @@
                         <a href="{% pageurl card %}">
                             <div class="item-title">{{ card.title }}</div>
                             <div class="item-image-wrapper">
-                            {% image card.header_image fill-250x250 class="item-image" %}
-                            {% for cat in card.categories.all %}
+                                {% image card.header_image fill-250x250 class="item-image" %}
                                 <div class="item-category">
-                                    <i class="fas fa-{{cat.category.icon}}"></i>
+                                    <i class="fas fa-{{card.categories.first.category.icon}}"></i>
                                 </div>
-                            {% endfor %}
                             </div>
                             <div class="item-date-label">
                                 <p><small>{{ card.last_published_at}}</small></p>
