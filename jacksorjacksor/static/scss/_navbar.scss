@@ -76,6 +76,10 @@
             .navigation-list-item-site-name {
                 font-size: 3rem;
             }
+
+            .active {
+                font-weight: bold;
+            }
             a {
                 font-size: 3rem;
                 color: var(--light-color);
@@ -83,6 +87,10 @@
                 font-weight: 300;
                 @include hover-transition-to-black-transparent;
                 text-align: center;
+            }
+
+            &.active a {
+                font-weight: bold;
             }
 
             .sublink > li > a {

@@ -9,7 +9,10 @@
 <!-- HERO -->
     <header>
         <div class="main-title">
-            <h1><a href="{% routablepageurl list_page "post_list" %}">{{ list_page.title | lower }}</a> > <a href="{% routablepageurl list_page 'post_by_category' page.categories.first.category.title %}">{{ page.categories.first.category.title | lower  }}</a> > {{ page.title }}</h1>
+            <h1><a href="{% routablepageurl list_page "post_list" %}">{{ list_page.title | lower }}</a> > <a href="{% routablepageurl list_page 'post_by_category' page.categories.first.category.title %}">{{ page.categories.first.category.title | lower  }}</a> > <a
+                href="{% pageurl page %}"
+                class="hero-link"
+            >{{ page.title }}</a></h1>
             
             </h1>
         </div>

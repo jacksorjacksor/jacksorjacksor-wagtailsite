@@ -22,11 +22,12 @@ def categories_list(context):
     except:
         category_to_filter = None
 
-    try:
-        if context["page"].categories.all()[0].category.title:
-            category_to_filter = context["page"].categories.all()[0].category.title
-    except:
-        category_to_filter = None
+    if category_to_filter == None:
+        try:
+            if context["page"].categories.all()[0].category.title:
+                category_to_filter = context["page"].categories.all()[0].category.title
+        except:
+            category_to_filter = None
 
     return {
         "request": context["request"],

@@ -1,4 +1,32 @@
 @import url("http://fonts.cdnfonts.com/css/poppins");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--light-color);
+  background: var(--primary-color);
+}
+
+body,
+body p,
+body h1 {
+  margin: 0;
+}
+
+footer {
+  text-align: center;
+  background: var(--dark-color);
+  padding: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--light-color);
+}
+
 :root {
   --primary-color: #800020;
   --primary-darkened: #570016;
@@ -132,6 +160,10 @@
   font-size: 3rem;
 }
 
+.navigation ul li .active {
+  font-weight: bold;
+}
+
 .navigation ul li a {
   font-size: 3rem;
   color: var(--light-color);
@@ -145,6 +177,10 @@
 .navigation ul li a:hover {
   color: var(--dark-color);
   opacity: 0.5;
+}
+
+.navigation ul li.active a {
+  font-weight: bold;
 }
 
 .navigation ul li .sublink > li > a {
@@ -406,6 +442,7 @@ header .main-title a:hover {
 }
 
 .category .category-container.filtered-container .category-card.filtered-card {
+  font-weight: bold;
   background: var(--secondary-darkened);
 }
 
@@ -575,34 +612,6 @@ header .main-title a:hover {
   height: 1px;
   background-color: var(--dark-color);
   margin-bottom: 2rem;
-}
-
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  color: var(--light-color);
-  background: var(--primary-color);
-}
-
-body,
-body p,
-body h1 {
-  margin: 0;
-}
-
-footer {
-  text-align: center;
-  background: var(--dark-color);
-  padding: 1rem;
-}
-
-a {
-  text-decoration: none;
-  color: var(--light-color);
 }
 
 @media (max-width: 400px) {

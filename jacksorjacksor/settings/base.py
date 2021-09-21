@@ -164,3 +164,6 @@ WAGTAIL_SITE_NAME = "jacksorjacksor"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = "http://example.com"
+
+# https://stackoverflow.com/questions/67783120/warning-auto-created-primary-key-used-when-not-defining-a-primary-key-type-by
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
