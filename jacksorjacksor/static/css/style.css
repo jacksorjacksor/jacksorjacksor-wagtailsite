@@ -183,11 +183,6 @@ a {
   font-weight: bold;
 }
 
-.navigation ul li .sublink > li > a {
-  font-size: 1.6rem;
-  line-height: 2.4rem;
-}
-
 .navigation .social-bar {
   position: absolute;
   top: 0;
@@ -230,8 +225,8 @@ button.form-mailing-list:hover {
 }
 
 .form-mailing-list {
-  margin-top: 1rem;
-  font-size: 2rem;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .landing > div {
@@ -647,7 +642,14 @@ header .main-title a:hover {
   margin-bottom: 2rem;
 }
 
-@media (max-width: 400px) {
+@media screen and (max-height: 400px) {
+  .navigation .left-hand-jacksorjacksor-logo,
+  .mailing-list-menu-item {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
   .navigation-list-item-site-name {
     display: none;
   }
@@ -702,6 +704,35 @@ a.hero-link
 div.hero-inner-container
 div.hero-description {
     max-width: 100%;
+  }
+  ul li.menu-item a,
+  ul li.menu-item {
+    line-height: 3rem;
+    font-size: 2rem;
+  }
+  ul li.menu-item input {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .category {
+    margin: auto;
+  }
+  .category .category-container {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  .category .category-container .category-card {
+    padding: 0;
+    margin: 0;
+    width: 10rem;
+  }
+  .category .category-container .category-card a div.category-title,
+  .category .category-container .category-card a div.category-icon {
+    padding: 0 0 0.5rem 0;
+    margin: 0;
   }
 }
 /*# sourceMappingURL=style.css.map */

@@ -4,16 +4,15 @@
 
  <section class="category">
     <div class="category-container {% if category_to_filter %}filtered-container{% endif %}">
-        {% for cat in categories %}<a href="{% routablepageurl list_page 'post_by_category' cat.title %}" >
-            <div class="category-card category-{{cat.title}} {% ifequal category_to_filter cat.title %}filtered-card{% endifequal %}">
-            
-                {#<a href="music-list-filter-{{cat.title}}-page.html">#}
+        {% for cat in categories %}
+            <a href="{% routablepageurl list_page 'post_by_category' cat.title %}" >
+                <div class="category-card category-{{cat.title}} {% ifequal category_to_filter cat.title %}filtered-card{% endifequal %}">
                     <div class="category-title">{{cat.title}}</div>
                     <div class="cat-icon">
                         <i class="{{cat.icon}}"></i>
                     </div>
-                
-            </div></a>
+                </div>
+            </a>
         {% empty %}
             <h1>No categories yet</h1>
         {% endfor %}

@@ -1,5 +1,14 @@
-// Tablets
-@media (max-width: 400px) {
+// phone: 600
+@media screen and (max-height: 400px) {
+    // Nav
+
+    .navigation .left-hand-jacksorjacksor-logo,
+    .mailing-list-menu-item {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
     // LANDING
     .navigation-list-item-site-name {
         display: none;
@@ -53,5 +62,39 @@
         div.hero-inner-container
         div.hero-description {
         max-width: 100%;
+    }
+
+    // Nav
+    ul li.menu-item a,
+    ul li.menu-item {
+        line-height: 3rem;
+        font-size: 2rem;
+    }
+    ul li.menu-item input {
+        font-size: 1.5rem;
+    }
+}
+
+// TABLET:
+@media screen and (max-width: 992px) {
+    // LIST
+    .category {
+        margin: auto;
+        .category-container {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+
+            .category-card {
+                padding: 0;
+                margin: 0;
+                width: 10rem;
+
+                a div.category-title,
+                a div.category-icon {
+                    padding: 0 0 0.5rem 0;
+                    margin: 0;
+                }
+            }
+        }
     }
 }
