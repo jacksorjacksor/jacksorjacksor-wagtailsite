@@ -6,4 +6,17 @@
         <a href="{{ item.href }}">{{ item.text | lower }}</a>
     </li>
 {% endfor %}
+    <li>-</li>
+    <li><form name="new-contact" method="POST" data-netlify="true">
+    <label class="form-mailing-list">mailing list:</li>
+    <li>
+    <input type="text" name="email" placeholder="email address" class="form-mailing-list" /></label></li>
+
+    <li><button
+        type="submit"
+        class="form-mailing-list"
+    >
+        sign-up
+    </button></li>
+    </form>
 </ul>

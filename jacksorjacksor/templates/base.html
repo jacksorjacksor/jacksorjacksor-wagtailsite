@@ -36,6 +36,10 @@
             src="{% static 'js/script.js' %}"
         ></script>
 
+        {% block footer %}
+            {% include "footer.html" %} 
+        {% endblock footer %}
+
         {% block extra_js %} {% endblock %}
     </body>
 </html>

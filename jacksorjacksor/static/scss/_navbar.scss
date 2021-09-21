@@ -116,3 +116,25 @@
         }
     }
 }
+
+button.form-mailing-list {
+    border-radius: 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+    transition: all 0.5s;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    background: var(--light-color);
+
+    &:hover {
+        border-radius: 0rem;
+        background: var(--dark-color);
+        color: var(--light-color);
+    }
+}
+
+.form-mailing-list {
+    margin-top: 1rem;
+    font-size: 2rem;
+}

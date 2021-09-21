@@ -12,5 +12,4 @@ class LandingPage(Page):
         context["music_list_page"] = ListPage.objects.filter(title="Music")[0]
         context["tech_list_page"] = ListPage.objects.filter(title="Tech")[0]
 
-        print(context)
         return context
