@@ -41,7 +41,7 @@
                                     {% image hero.header_image fill-250x250 class="hero-image" %}
                             
                                     <div class="category">
-                                        <i class="fas fa-{{hero.categories.first.category.icon}}"></i>
+                                        <i class="{{hero.categories.first.category.icon}}"></i>
                                     </div>
                                 </div>
                                 <div class="hero-date-label">
@@ -69,7 +69,7 @@
                             <div class="item-image-wrapper">
                                 {% image card.header_image fill-250x250 class="item-image" %}
                                 <div class="item-category">
-                                    <i class="fas fa-{{card.categories.first.category.icon}}"></i>
+                                    <i class="{{card.categories.first.category.icon}}"></i>
                                 </div>
                             </div>
                             <div class="item-date-label">

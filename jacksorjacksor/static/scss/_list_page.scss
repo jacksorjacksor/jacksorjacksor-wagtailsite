@@ -191,3 +191,11 @@ header {
         }
     }
 }
+
+.back-home > a {
+    color: var(--light-color);
+    transition: all 0.5s;
+    &:hover {
+        color: var(--dark-color);
+    }
+}

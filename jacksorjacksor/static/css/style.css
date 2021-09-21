@@ -575,6 +575,16 @@ header .main-title a:hover {
   font-style: italic;
 }
 
+.back-home > a {
+  color: var(--light-color);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.back-home > a:hover {
+  color: var(--dark-color);
+}
+
 .main-title {
   display: -webkit-box;
   display: -ms-flexbox;

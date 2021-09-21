@@ -18,6 +18,8 @@
         </div>
     </header>
 
+    {% categories_list %}
+
     <section class="hero-section">
         <div class="hero-container">
             <a
@@ -30,7 +32,7 @@
                     <div class="hero-image">
                         {% image page.header_image fill-250x250 class="hero-image" %}
                         <div class="category">
-                            <i class="fas fa-{{ page.categories.first.category.icon }}"></i>
+                            <i class="{{ page.categories.first.category.icon }}"></i>
                         </div>
                     </div>
                     <div class="hero-date-label">
@@ -49,8 +51,6 @@
         {% include "components/streamfield.html" %}
     </section>
     <div class="divider"></div>
-    
-    {% categories_list %}
 
     <section class="items">
         <div class="item-container">
@@ -63,7 +63,7 @@
                             <div class="item-image-wrapper">
                                 {% image card.detailpage.header_image fill-250x250 class="item-image" %}
                                 <div class="item-category">
-                                    <i class="fas fa-{{ card.detailpage.categories.first.category.icon }}"></i>
+                                    <i class="{{ card.detailpage.categories.first.category.icon }}"></i>
                                 </div>
                             </div>
                             <div class="item-date-label">
