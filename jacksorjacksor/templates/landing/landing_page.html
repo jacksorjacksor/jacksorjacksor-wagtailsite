@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load static  %} 
+{% load static wagtailcore_tags menu_tags %} 
 
 
 {% block body_class %}
@@ -10,6 +10,11 @@
 
 {% block content %}
 
+{% for item in menu_items %}
+    {{ item.text }}
+{% endfor %}
+
+
 <!-- CONTENT -->
 <section class="landing" id="landing">
     <div class="music-landing landing-card">
@@ -17,18 +22,19 @@
             <h1>jacksor</h1>
         </div>
         <div class="header landing-page-link">
-            <a href="/music/">
+            <a href="{% pageurl music_list_page %}">
                 <p>music</p>
             </a>
         </div>
 
         <div class="icon landing-page-link">
-            <a href="/music/"
-                ><i class="fas fa-arrow-up"></i
-            ></a>
+            <a href="{% pageurl music_list_page %}">
+                <i class="fas fa-arrow-up"></i>
+            </a>
         </div>
+
         <div class="icon landing-page-link">
-            <a href="/music/"><i class="fas fa-music"></i></a>
+            <a href="{% pageurl music_list_page %}"><i class="fas fa-music"></i></a>
         </div>
     </div>
     <div class="tech-landing">
@@ -37,16 +43,19 @@
         </div>
 
         <div class="header landing-page-link">
-            <a href="tech-list-view-page.html">
+            <a href="{% pageurl tech_list_page %}">
                 <p>tech</p>
             </a>
         </div>
 
         <div class="icon landing-page-link">
-            <i class="fas fa-arrow-down"></i>
+            <a href="{% pageurl tech_list_page %}">
+                <i class="fas fa-arrow-down"></i>
+            </a>
         </div>
+
         <div class="icon landing-page-link">
-            <a href="tech-list-view-page.html"
+            <a href="{% pageurl tech_list_page %}"
                 ><i class="fas fa-laptop-code"></i
             ></a>
         </div>

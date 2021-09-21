@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load menu_tags %}
 <!-- NAV MENU -->
 {% block navbar %}
 <nav>
@@ -13,7 +14,10 @@
         <div class="left-hand-jacksorjacksor-logo">
             <a href="index.html">jacksorjacksor</a>
         </div>
-        <ul>
+
+        {% main_menu max_levels=2 template="components/menus/custom_main_menu.html" sub_menu_templates="components/menus/sub_menu.html"%}
+
+        {% comment %} <ul>
             <li class="navigation-list-item-site-name">
                 <a href="index.html"
                     ><p class="menu-jacksorjacksor">jacksorjacksor</p></a
@@ -47,7 +51,7 @@
             </li>
             <li><a href="#">about</a></li>
             <li><a href="#">contact</a></li>
-        </ul>
+        </ul> {% endcomment %}
         <div class="social-bar">
             <ul>
                 <li>
