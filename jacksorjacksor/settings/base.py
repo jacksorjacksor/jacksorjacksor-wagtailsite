@@ -30,6 +30,10 @@ INSTALLED_APPS = [
     "django_extensions",
     "typing_extensions",
     "generic_page",
+    # https://torchbox.github.io/wagtail-content-import/basic_usage/
+    "wagtail_content_import",
+    'wagtail_content_import.pickers.local',
+    'wagtail_content_import.pickers.microsoft',
     "wagtail.contrib.routable_page",
     "wagtail.contrib.modeladmin",
     "wagtailmenus",
