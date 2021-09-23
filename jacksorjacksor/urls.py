@@ -8,12 +8,15 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
+from mailing_list import views as mailing_list_views
+
 
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
+    path("ajax/mailing_list/", mailing_list_views.mailing_list, name="mailing_list"),
 ]
 
 

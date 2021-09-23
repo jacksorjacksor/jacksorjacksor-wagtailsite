@@ -1,0 +1,46 @@
+<h1>Hello again!</h1>
+
+<p id="text_to_change">This is the original text</p>
+
+<form id="mailing_list_form" onsubmit="checkEmail()" method="POST">
+    {% csrf_token %}
+    <input type="email" name="text_input" id="email_submission_data">
+    <button type="submit">LET US TRY</button>
+</form>
+
+<script>
+    // Details from this article: https://www.brennantymrak.com/articles/fetching-data-with-ajax-and-django.html
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function checkEmail(){
+        var data_to_post = document.getElementById('email_submission_data').value;
+        event.preventDefault();
+			fetch('/ajax/mailing_list/',{
+				method: 'POST',
+				headers: {
+					"Content-Type": "application/json",
+                    'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+                    'X-CSRFToken': getCookie('csrftoken'),
+				},
+                body: JSON.stringify({'post_data':data_to_post}),
+				credentials: 'same-origin',
+            }).then(response => {
+                return response.json() //Convert response to JSON
+            }).then(data => {
+                document.getElementById('text_to_change').innerHTML = data.output;
+            })
+        } 
+</script>
