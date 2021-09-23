@@ -1,24 +1,22 @@
 <!-- FOOTER MENU -->
 {% block footer %}
 <footer>
-<div class="mailing-list">
-    <form name="new-contact" method="POST" data-netlify="true">
-        
-            <label>Mailing list: <input type="text" name="email" placeholder="email address" /></label>
-        
-            <button
-                type="submit"
-                style="
-                    padding: 0 1rem;
-                    border-radius: 0;
-                    font-family: 'Poppins', sans-serif;
-                "
-            >
-                Sign-up
-            </button>
-        
+<!-- <div class="mailing-list">
+    <form method="POST">
+        {% csrf_token %}
+        <label>Mailing list: <input type="text" name="email" placeholder="email address" /></label>
+        <button
+            type="submit"
+            style="
+                padding: 0 1rem;
+                border-radius: 0;
+                font-family: 'Poppins', sans-serif;
+            "
+        >
+            Sign-up
+        </button>  
     </form>
-    </div>
+    </div> -->
 
     <div class="footer-sitemap">
         <a href="/about/">About</a> | Copyright &copy jacksorjacksor 2021 |
