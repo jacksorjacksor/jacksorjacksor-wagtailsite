@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -30,10 +31,6 @@ INSTALLED_APPS = [
     "django_extensions",
     "typing_extensions",
     "generic_page",
-    # https://torchbox.github.io/wagtail-content-import/basic_usage/
-    "wagtail_content_import",
-    'wagtail_content_import.pickers.local',
-    'wagtail_content_import.pickers.microsoft',
     "wagtail.contrib.routable_page",
     "wagtail.contrib.modeladmin",
     "wagtailmenus",
@@ -85,6 +82,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "wagtailmenus.context_processors.wagtailmenus",
+                # command for auto-generating menu: python manage.py autopopulate_main_menus
             ],
         },
     },
@@ -96,10 +94,16 @@ WSGI_APPLICATION = "jacksorjacksor.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# Logging in via PSQL:
+# psql -h 127.0.0.1 -p 5433 -U jacksorjacksor -W jacksorjacksor
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "jacksorjacksor",  # db name
+        "USER": "jacksorjacksor",  # username
+        "PASSWORD": "root",  # pw (how to set this privately when deployed?)
+        "HOST": "127.0.0.1",
+        "PORT": "5433",  # specifically 5433, not 5432
     }
 }
 

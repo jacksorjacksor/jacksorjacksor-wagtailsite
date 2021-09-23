@@ -62,11 +62,14 @@ a {
   top: 1rem;
   left: 1rem;
   font-size: 1rem;
+}
+
+.left-hand-jacksorjacksor-logo a {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
-.left-hand-jacksorjacksor-logo:hover {
+.left-hand-jacksorjacksor-logo a:hover {
   color: var(--dark-color);
   opacity: 0.5;
 }
@@ -245,12 +248,12 @@ button.form-mailing-list:hover {
   font-size: 1rem;
 }
 
-.landing > div > div.landing-page-link {
+.landing > div > div a {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
-.landing > div > div.landing-page-link:hover {
+.landing > div > div a:hover {
   color: var(--dark-color);
   opacity: 0.5;
 }
@@ -625,7 +628,19 @@ header .main-title a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0rem 2rem 2rem 2rem;
+  padding: 2rem;
+  margin: auto;
+}
+
+.detail-body-container h1 {
+  font-size: 3rem;
+  padding-bottom: 2rem;
+}
+
+.detail-body-container p {
+  max-width: 80vw;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
 }
 
 .back-home {

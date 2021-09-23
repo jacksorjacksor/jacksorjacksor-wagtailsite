@@ -134,8 +134,8 @@ class DetailPage(Page):
     content_panels = Page.content_panels + [
         ImageChooserPanel("header_image"),
         FieldPanel("description"),
-        StreamFieldPanel("body"),
         InlinePanel("categories", label="categories"),
+        StreamFieldPanel("body"),
         FieldPanel("hero_content_bool"),
         FieldPanel("hero_super_title"),
     ]
@@ -145,7 +145,7 @@ class DetailPage(Page):
 class DetailPageCategory(models.Model):
     page = ParentalKey("main_card_container.DetailPage", on_delete=models.CASCADE, related_name="categories")
     category = models.ForeignKey(
-        "main_card_container.Category", on_delete=models.CASCADE, related_name="category", blank="True", null="True"
+        "main_card_container.Category", on_delete=models.CASCADE, related_name="category", blank="False", null="False"
     )
 
     panels = [SnippetChooserPanel("category")]

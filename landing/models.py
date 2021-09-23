@@ -9,7 +9,7 @@ class LandingPage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
 
-        context["music_list_page"] = ListPage.objects.filter(title="Music")[0]
-        context["tech_list_page"] = ListPage.objects.filter(title="Tech")[0]
+        context["music_list_page"] = ListPage.objects.filter(title="music")[0]
+        context["tech_list_page"] = ListPage.objects.filter(title="tech")[0]
 
         return context

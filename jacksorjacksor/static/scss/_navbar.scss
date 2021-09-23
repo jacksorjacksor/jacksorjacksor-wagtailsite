@@ -4,7 +4,9 @@
     top: 1rem;
     left: 1rem;
     font-size: 1rem;
-    @include hover-transition-to-black-transparent;
+    a {
+        @include hover-transition-to-black-transparent;
+    }
 }
 
 /* MENU TOGGLE */

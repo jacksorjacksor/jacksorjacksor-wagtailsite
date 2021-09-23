@@ -15,7 +15,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0rem 2rem 2rem 2rem;
+    padding: 2rem;
+
+    margin: auto;
+    h1 {
+        font-size: 3rem;
+        padding-bottom: 2rem;
+    }
+    p {
+        max-width: 80vw;
+        word-wrap: break-word;
+        text-overflow: ellipsis;
+    }
 }
 
 // HERO SECTION

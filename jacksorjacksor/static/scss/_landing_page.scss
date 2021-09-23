@@ -10,7 +10,7 @@
     align-items: center;
     font-size: 1rem;
 
-    > div.landing-page-link {
+    > div a {
         @include hover-transition-to-black-transparent;
     }
     // Music half
