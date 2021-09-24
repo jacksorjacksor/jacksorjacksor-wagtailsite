@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     "wagtail.contrib.routable_page",
     "wagtail.contrib.modeladmin",
     "wagtailmenus",
-    "mailing_list",
+    "mailing_list.apps.MailingListConfig",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
