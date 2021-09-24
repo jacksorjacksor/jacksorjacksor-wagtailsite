@@ -14,3 +14,6 @@ try:
     from .local import *
 except ImportError:
     pass
+
+HCAPTCHA_SITEKEY = "adfdf8e1-ab50-4853-ae70-1579532b0a77"
+HCAPTCHA_SECRET = "0xa4d4d0eD872D985d6788591627b134339486b156"
