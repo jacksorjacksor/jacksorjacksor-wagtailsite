@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     "wagtail.contrib.modeladmin",
     "wagtailmenus",
     "mailing_list",
-    "hcaptcha",  # https://pypi.org/project/django-hCaptcha/
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
