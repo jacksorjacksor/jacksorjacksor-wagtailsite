@@ -100,11 +100,11 @@ WSGI_APPLICATION = "jacksorjacksor.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "jacksorjacksor",  # db name
-        "USER": "jacksorjacksor",  # username
-        "PASSWORD": "root",  # pw (how to set this privately when deployed?)
-        "HOST": "127.0.0.1",
-        "PORT": "5433",  # specifically 5433, not 5432
+        "NAME": "jacksorjacksor",
+        "USER": "jacksorjacksor",
+        "PASSWORD": "y&@qLDq$5?&e$DFM",
+        "HOST": "jacksorjacksor-119.postgres.eu.pythonanywhere-services.com",
+        "PORT": 10119,
     }
 }
 
