@@ -182,7 +182,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 # advice from here: https://moonbooks.org/Articles/How-to-create-and-send-an-email-with-a-django-based-website-using-namecheap-and-digitalocean-/Edit/
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "mail.privateemail.com"
-EMAIL_PORT = 25
+EMAIL_PORT = 587
 EMAIL_HOST_USER = "rich@jacksorjacksor.xyz"
 EMAIL_HOST_PASSWORD = "on7bc@Y$9Ph3eh5e"
 EMAIL_USE_TLS = True

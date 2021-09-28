@@ -28,11 +28,10 @@ def mailing_list(request):
             output_message = "Please try again"
 
         # If the email address isn't already added then add it
-        # if not MailingList.objects.filter(email_address=email_input).exists():
-        f = MailingListForm({"email_address": email_input})
-        f.save()
-
-        send_email_to_new_mailing_list_sign_up(email_input)
+        if not MailingList.objects.filter(email_address=email_input).exists():
+            f = MailingListForm({"email_address": email_input})
+            f.save()
+            send_email_to_new_mailing_list_sign_up(email_input)
 
         output_message = f"{email_input} has been added to the mailing list!"
 
