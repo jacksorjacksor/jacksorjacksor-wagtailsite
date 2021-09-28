@@ -1,16 +1,15 @@
-<head>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
+{% comment %} I removed this as it wasn't working and was a bit in your face... {% endcomment %}
 
 
-<p id="success-message" class="hidden"></p>
-<form id="mailing_list_form" onsubmit="checkEmail()" method="POST">
-    {% csrf_token %}
-    <input id="name_submission_data" class="hidden" type="text" name="name" placeholder="name" />
-    <input type="email" name="text_input" id="email_submission_data">
-    <button type="submit">Mailing List</button>
-</form>
-
+<div class="mailing-list-menu-item">
+    <li class="menu-item">-</p></li>
+        <form id="mailing_list_form_nav" onsubmit="checkEmailNav()" method="POST">
+            <li class="menu-item"><label class="form-mailing-list" for="mailing_list_form_nav">Mailing list</label></li>
+            {% csrf_token %}
+            <input id="name_submission_data_nav" class="hidden" type="text" name="name" placeholder="name" />
+            <li class="menu-item"><input type="email" name="text_input" id="email_submission_data_nav" class="form-mailing-list" placeholder="email@address.please"><p id="success_message_nav" class="hidden"></p></li>
+            <li class="menu-item"><button class="form-mailing-list" type="submit">Sign up</button></li>
+        </form>
 
 
 <script>
@@ -30,13 +29,11 @@
         return cookieValue;
     }
 
-    function checkEmail(){
+    function checkEmailNav(){
         event.preventDefault();
         // Captcha check: if "name" field is filled out then it's a bot
-        var name_input = document.getElementById('name_submission_data').value;
-        var email_input = document.getElementById('email_submission_data').value;
-        var success_message = document.getElementById('success-message')
-        var mailing_list_form = document.getElementById('mailing_list_form')
+        var name_input = document.getElementById('name_submission_data_nav').value;
+        var email_input = document.getElementById('email_submission_data_nav').value;
         // If no info is put into the email form then don't submit
         
         if (email_input.length==0){
@@ -58,9 +55,10 @@
         }).then(response => {
             return response.json() //Convert response to JSON
         }).then(data => {
-            success_message.classList.remove("hidden");
-            success_message.innerHTML=data.output_message;
-            mailing_list_form.classList.add("hidden");
+            console.log(data.output_message)
+            document.getElementById('success_message_nav').classList.remove("hidden");
+            document.getElementById('success_message_nav').innerHTML=data.output_message;
+            document.getElementById('mailing_list_form_nav').classList.add("hidden");
         })
     } 
 </script>

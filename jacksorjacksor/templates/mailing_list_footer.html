@@ -1,16 +1,12 @@
-<head>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-
 
 <p id="success-message" class="hidden"></p>
 <form id="mailing_list_form" onsubmit="checkEmail()" method="POST">
+    <label for="mailing_list_form">Mailing list: </label>
     {% csrf_token %}
     <input id="name_submission_data" class="hidden" type="text" name="name" placeholder="name" />
-    <input type="email" name="text_input" id="email_submission_data">
-    <button type="submit">Mailing List</button>
+    <input type="email" name="text_input" id="email_submission_data" placeholder="email@address.please">
+    <button type="submit">Sign up</button>
 </form>
-
 
 
 <script>

@@ -57,6 +57,10 @@ a {
   font-weight: bold;
 }
 
+.hidden {
+  display: none;
+}
+
 .left-hand-jacksorjacksor-logo {
   position: absolute;
   top: 1rem;

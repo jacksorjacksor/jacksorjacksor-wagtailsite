@@ -6,6 +6,10 @@
         <a href="{{ item.href }}">{{ item.text | lower }}</a>
     </li>
 {% endfor %}
+    {% comment %} {% block mailing_list %}
+        {% include "mailing_list_navbar.html" %} 
+    {% endblock mailing_list %} {% endcomment %}
+
     <!-- <div class="mailing-list-menu-item">
         <li class="menu-item">-</li>
         <li class="menu-item"><form name="new-contact" method="POST" data-netlify="true">
@@ -18,6 +22,6 @@
         >
             sign-up
         </button></li>
-    </div> -->
-    </form>
+    </div> </form>-->
+    
 </ul>
