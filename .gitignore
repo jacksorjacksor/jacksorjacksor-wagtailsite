@@ -10,4 +10,3 @@ db_instructions.md
 docs/learning_about_categories_and_routable_pages.md
 docs/wagtail_learning.md
 *.md
-dev.py
