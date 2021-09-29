@@ -1,5 +1,8 @@
-from jacksorjacksor.settings.dev import ALLOWED_HOSTS, SECRET_KEY
+from jacksorjacksor.settings.dev import ALLOWED_HOSTS_FOR_PROD, SECRET_KEY_FOR_PROD
 from .base import *
+
+ALLOWED_HOSTS = ALLOWED_HOSTS_FOR_PROD
+SECRET_KEY = SECRET_KEY_FOR_PROD
 
 DEBUG = False
 
