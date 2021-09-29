@@ -1,0 +1,11 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="{% if block.value.reverse %}flex-row-reverse{% endif %}" style="padding-bottom:2rem;">
+    <div class="">
+        {% image block.value.image width-400 as img %}
+        <img class="" alt="" src="{{ img.url }}">
+    </div>
+    <div class="" style="text-align: center;">
+        {{ block.value.text|richtext }}
+    </div>
+</div>

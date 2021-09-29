@@ -9,9 +9,9 @@
             {% elif block.block_type == 'paragraph' %}
             {{ block.value|richtext }}
             {% elif block.block_type == 'image_text' %}
-            {% include 'blog/blocks/image_text.html' with block=block only %}
+            {% include 'components/streamfield_components/image_text.html' with block=block only %}
             {% elif block.block_type == 'image_carousel' %}
-            {% include 'blog/blocks/image_carousel.html' with block=block only %}
+            {% include 'components/streamfield_components/image_carousel.html' with block=block only %}
             {% else %}
             <section class="block-{{ block.block_type }}">
             {{ block }}
