@@ -1,6 +1,5 @@
 *.pdf
 *.md
-jacksorjacksor/settings/dev.py
 database_setup.md
 db_connections_via_ssh_tunnel_2.py
 db_connections_via_ssh_tunnel.py
