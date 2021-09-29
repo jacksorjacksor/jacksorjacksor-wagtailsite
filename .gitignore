@@ -1,4 +1,5 @@
 *.pdf
+*.md
 jacksorjacksor/settings/dev.py
 database_setup.md
 db_connections_via_ssh_tunnel_2.py
@@ -9,4 +10,3 @@ db_instructions.md
 db_instructions.md
 docs/learning_about_categories_and_routable_pages.md
 docs/wagtail_learning.md
-*.md
