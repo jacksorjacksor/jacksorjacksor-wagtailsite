@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "typing_extensions",
     "generic_page",
+    "contact",
     "wagtail.contrib.routable_page",
     "wagtail.contrib.modeladmin",
     "wagtailmenus",
