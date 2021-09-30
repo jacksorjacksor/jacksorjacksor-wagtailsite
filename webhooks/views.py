@@ -16,6 +16,7 @@ def webhook_update(request):
 
     try:
         subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])
+        print("server restarted!")
     except:
         print("couldn't restart server")
     return HttpResponse("<h1>HI!</h1>")
