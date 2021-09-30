@@ -9,3 +9,4 @@ import git
 @csrf_exempt
 def webhook_update(request):
     print("IT'S GIT UPDATE BABY")
+    print("So this will then PULL when a PUSH event happens")
