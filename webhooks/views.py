@@ -15,7 +15,7 @@ def webhook_update(request):
     print("So then we have to:")
     print("git pull")
     print("restart server via touch wsgi")
-    repo = git.Repo("jacksorjacksor_wagtailsite")
+    repo = git.Repo("jacksorjacksor-wagtailsite")
     origin = repo.remote(name="origin")
     origin.pull()
     return HttpResponse("<h1>HI!</h1>")
