@@ -12,6 +12,7 @@ def webhook_update(request):
     repo = git.Repo("jacksorjacksor-wagtailsite")
     origin = repo.remote(name="origin")
     origin.pull()
+    print("here?")
     try:
         subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])
         print("server restarted!")
