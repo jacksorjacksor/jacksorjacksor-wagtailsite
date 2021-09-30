@@ -19,6 +19,7 @@ urlpatterns = [
     path("search/", search_views.search, name="search"),
     path("ajax/mailing_list/", mailing_list_views.mailing_list, name="mailing_list"),
     path("api/postreceive/", webhook_views.webhook_update, name="webhook_update"),
+    # done?
 ]
 
 
