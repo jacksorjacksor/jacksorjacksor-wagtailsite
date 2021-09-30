@@ -3,7 +3,7 @@ import subprocess
 
 # Database dump:
 psql_command = (
-    "pg_dump --host=localhost --port=5433 --username=jacksorjacksor --format=tar --file=dump.dump dbname=jacksorjacksor"
+    "pg_dump --host=localhost --port=5433 --username=jacksorjacksor --format=tar --file=dump dbname=jacksorjacksor"
 )
 
 psql_command_as_list = psql_command.split(" ")
