@@ -10,3 +10,4 @@ import git
 def webhook_update(request):
     print("IT'S GIT UPDATE BABY")
     print("So this will then PULL when a PUSH event happens")
+    print("and we need to look into Python Decoupling")
