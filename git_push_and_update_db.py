@@ -13,7 +13,7 @@ subprocess.run(psql_command_as_list)
 repo = git.Repo("~/wagtail/jacksorjacksor-wagtailsite")
 repo.git.add(all=True)
 
-commit_message = input("Commit message:")
+commit_message = input("Commit message: ")
 
 repo.git.commit("-m", commit_message)
 
