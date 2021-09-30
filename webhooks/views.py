@@ -17,7 +17,10 @@ def webhook_update(request):
     except:
         pass
 
-    origin.pull()
+    try:
+        origin.pull()
+    except:
+        print("Issue with git pull")
     try:
         subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])
         print("server restarted!")
