@@ -6,7 +6,7 @@ import git
 import subprocess
 
 # Create your views here.
-@require_POST
+# @require_POST
 @csrf_exempt
 def webhook_update(request):
     repo = git.Repo("jacksorjacksor-wagtailsite")
