@@ -5,7 +5,6 @@ from django.views.decorators.http import require_POST
 import git
 
 # Create your views here.
-@require_POST
 @csrf_exempt
 def webhook_update(request):
     print("IT'S GIT UPDATE BABY")
