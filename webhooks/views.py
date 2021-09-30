@@ -13,7 +13,8 @@ def webhook_update(request):
     print("So this will then PULL when a PUSH event happens")
     print("and we need to look into Python Decoupling")
     print("So then we have to:")
-    print("git pull")
+    print("git pull")  # hi
+
     print("restart server via touch wsgi")
     repo = git.Repo("jacksorjacksor-wagtailsite")
     origin = repo.remote(name="origin")
