@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import request, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
 import git
 import subprocess
 
@@ -17,4 +16,17 @@ def webhook_update(request):
         print("server restarted!")
     except:
         print("couldn't restart server")
+
+    try:
+        # Database dump:
+        psql_command = "pg_restore --create --clean --host=jacksorjacksor-119.postgres.eu.pythonanywhere-services.com --port=10119 --no-password --file=dump.dump --format=tar --username=jacksorjacksor --dbname=jacksorjacksor"
+
+        psql_command_as_list = psql_command.split(" ")
+        subprocess.run(psql_command_as_list)
+    except:
+        print("Database issues")
+
     return HttpResponse("<h1>HI!</h1>")  # probably should have something else here...
+
+
+import subprocess
