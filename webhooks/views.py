@@ -10,6 +10,13 @@ import subprocess
 def webhook_update(request):
     repo = git.Repo("jacksorjacksor-wagtailsite")
     origin = repo.remote(name="origin")
+
+    try:
+        repo.git.stash("save")
+        repo.git.stash("drop")
+    except:
+        pass
+
     origin.pull()
     try:
         subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])
