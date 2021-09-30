@@ -11,7 +11,6 @@ subprocess.run(psql_command_as_list)
 
 ## Separate action as we'll need to name the commit, BUT!
 # Use psycopg2 to make pg_dump
-# Add all
 
 repo = git.Repo("~/wagtail/jacksorjacksor-wagtailsite")
 repo.git.add(all=True)
