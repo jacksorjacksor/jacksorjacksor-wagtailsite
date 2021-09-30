@@ -5,6 +5,7 @@ from django.views.decorators.http import require_POST
 import git
 
 # Create your views here.
+@require_POST
 @csrf_exempt
 def webhook_update(request):
     print("IT'S GIT UPDATE BABY")
@@ -13,4 +14,7 @@ def webhook_update(request):
     print("So then we have to:")
     print("git pull")
     print("restart server via touch wsgi")
+    repo = git.Repo("jacksorjacksor_wagtailsite")
+    origin = repo.remote(name="origin")
+    origin.pull()
     return HttpResponse("<h1>HI!</h1>")
