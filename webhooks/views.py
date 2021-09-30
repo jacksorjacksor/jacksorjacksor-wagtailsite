@@ -10,4 +10,7 @@ def webhook_update(request):
     print("IT'S GIT UPDATE BABY")
     print("So this will then PULL when a PUSH event happens")
     print("and we need to look into Python Decoupling")
+    print("So then we have to:")
+    print("git pull")
+    print("restart server via touch wsgi")
     return HttpResponse("<h1>HI!</h1>")
