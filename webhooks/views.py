@@ -6,13 +6,12 @@ import git
 import subprocess
 
 # Create your views here.
-# @require_POST
+# @require_POST # This didn't work for some reason, but OK!
 @csrf_exempt
 def webhook_update(request):
     repo = git.Repo("jacksorjacksor-wagtailsite")
     origin = repo.remote(name="origin")
     origin.pull()
-    print("here?")
     try:
         subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])
         print("server restarted!")

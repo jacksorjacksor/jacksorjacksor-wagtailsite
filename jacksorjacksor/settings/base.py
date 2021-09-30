@@ -99,17 +99,6 @@ WSGI_APPLICATION = "jacksorjacksor.wsgi.application"
 
 # Logging in via PSQL:
 # psql -h 127.0.0.1 -p 5433 -U jacksorjacksor -W jacksorjacksor
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "jacksorjacksor",
-        "USER": "jacksorjacksor",
-        "PASSWORD": "y&@qLDq$5?&e$DFM",
-        "HOST": "jacksorjacksor-119.postgres.eu.pythonanywhere-services.com",
-        "PORT": 10119,
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
