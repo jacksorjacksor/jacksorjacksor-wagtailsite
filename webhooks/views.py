@@ -47,8 +47,8 @@ def webhook_update(request):
     except:
         print_issue(command)
 
-# Just doing this until I know the git pull actually works. This is just a theory.
-time.sleep(5)
+    # Just doing this until I know the git pull actually works. This is just a theory.
+    time.sleep(5)
 
     command = "restart server"
     try:
