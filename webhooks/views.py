@@ -6,17 +6,6 @@ import subprocess
 from django.core.mail import send_mail
 
 
-def send_email_to_me(reason):
-    pass
-    send_mail(
-        f"jacksorjacksor - site issue: {reason}",
-        f"Issue with {reason}",
-        "rich@jacksorjacksor.xyz",
-        ["jacksorjacksor@pm.me"],
-        fail_silently=False,
-    )
-
-
 ## UTIL FUNCTIONS
 def print_running(command):
     print(f">>> running {command}")
@@ -33,88 +22,41 @@ def print_issue(command):
     return None
 
 
-# Create your views here.
+def run_list_of_commands(command, tuple_of_python_lines):
+    success = True
+    print_running(command)
+    for line in tuple_of_python_lines:
+        try:
+            exec(line)
+        except:
+            send_email_to_me(command, line)
+            success = False
+    if success:
+        print_completed(command)
+    else:
+        print_issue(command)
+
+
+def send_email_to_me(reason, line):
+    send_mail(
+        f"jacksorjacksor - site issue: {reason}",
+        f"Issue with {reason}: {line}",
+        "rich@jacksorjacksor.xyz",
+        ["jacksorjacksor@pm.me"],
+        fail_silently=False,
+    )
+
+
+# Global var:
+repo = git.Repo("jacksorjacksor-wagtailsite")
+origin = repo.remote(name="origin")
+
 # @require_POST # This didn't work for some reason, but OK!
 @csrf_exempt
 def webhook_update(request):
-    repo = git.Repo("jacksorjacksor-wagtailsite")
-    origin = repo.remote(name="origin")
-
-    send_email_to_me("hi!!!")
-
-    command = "git pull"
-    try:
-        print_running(command)
-        origin.pull()
-        subprocess.run(["git", "status"])
-        print_completed(command)
-    except:
-        send_email_to_me("git pull")
-        print_issue(command)
-
-    command = "restart server"
-    try:
-        print_running(command)
-        subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])
-        print_completed(command)
-    except:
-        print_issue(command)
+    run_list_of_commands("git pull", ("origin.pull()", 'subprocess.run(["git", "status"])'))
+    run_list_of_commands("restart server", (subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])))
 
     print("Done!")
 
     return HttpResponse("<h1>HI!</h1>")  # probably should have something else here...
-
-    # database_restore()
-    # Removed this as would wipe out existing materials
-
-    # command = "activate venv"
-    # try:
-    #     print_running(command)
-    #     run_static_command = "source /home/jacksorjacksor/.virtualenvs/wagtail/bin/activate"
-    #     run_static_command_as_list = run_static_command.split(" ")
-    #     subprocess.run(run_static_command_as_list)
-    #     print_completed(command)
-    # except:
-    #     print_issue(command)
-
-    # command = "check django"
-    # try:
-    #     print_running(command)
-    #     run_static_command = "python ~/wagtail/jacksorjacksor-wagtailsite/manage.py check"
-    #     run_static_command_as_list = run_static_command.split(" ")
-    #     subprocess.run(run_static_command_as_list)
-    #     print_completed(command)
-    # except:
-    #     print_issue(command)
-
-    # command = "activate venv"
-    # try:
-    #     print_running(command)
-    #     run_static_command = "python ~/wagtail/jacksorjacksor-wagtailsite/manage.py collectstatic --noinput"
-    #     run_static_command_as_list = run_static_command.split(" ")
-    #     subprocess.run(run_static_command_as_list)
-    #     print_completed(command)
-    # except:
-    #     print_issue(command)
-
-    # command = "git stash"
-    # try:
-    #     print_running(command)
-    #     repo.git.add(all=True)
-    #     repo.git.stash()
-    #     repo.git.stash("drop")
-    #     print_completed(command)
-    # except:
-    #     print_issue(command)
-
-
-# def database_restore():
-#     command = "pg_restore"
-#     try:
-#         print_running(command)
-#         psql_command = "pg_restore --create --clean --host=jacksorjacksor-119.postgres.eu.pythonanywhere-services.com --port=10119 --no-password --dbname=jacksorjacksor --format=tar --username=jacksorjacksor --no-password /home/jacksorjacksor/jacksorjacksor-wagtailsite/database_dump.tar"
-#         psql_command_as_list = psql_command.split(" ")
-#         subprocess.run(psql_command_as_list)
-#         print_completed(command)
-#     except:
-#         print_issue(command)
