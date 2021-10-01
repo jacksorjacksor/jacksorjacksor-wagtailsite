@@ -76,7 +76,7 @@ def webhook_update(request):
     hmac_gen = hmac.new(secret, payload, hashlib.sha1)
 
     # create the hex digest and append prefix to match the GitHub request format
-    digest = "sha1=" + hmac_gen.hexdigest()
+    digest = "sha1=" + hmac_gen.hexdigest()  #
 
     if not hmac.compare_digest(digest, signature):
         return HttpResponse("<h1>NO! - compare digest</h1>")
