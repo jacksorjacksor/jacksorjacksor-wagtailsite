@@ -12,7 +12,7 @@ def send_email_to_me(reason):
         f"jacksorjacksor - site issue: {reason}",
         f"Issue with {reason}",
         "rich@jacksorjacksor.xyz",
-        "jacksorjacksor@pm.me",
+        ["jacksorjacksor@pm.me"],
         fail_silently=False,
     )
 
