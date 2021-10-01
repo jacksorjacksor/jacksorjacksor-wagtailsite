@@ -67,7 +67,7 @@ def webhook_update(request):
     command = "collectstatic"
     try:
         print_running(command)
-        run_static_command = "cd /home/jacksorjacksor/jacksorjacksor-wagtailsite && workon wagtail && python manage.py collectstatic --noinput"
+        run_static_command = "source /home/jacksorjacksor/.virtualenvs/wagtail/bin/activate && cd /home/jacksorjacksor/jacksorjacksor-wagtailsite && python manage.py collectstatic --noinput"
         run_static_command_as_list = run_static_command.split(" ")
         subprocess.run(run_static_command_as_list)
         print_completed(command)
