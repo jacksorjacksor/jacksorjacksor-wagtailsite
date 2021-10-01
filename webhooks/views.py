@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 import os
 from dotenv import load_dotenv
 import hmac
+import json
 
 load_dotenv()
 
@@ -53,6 +54,14 @@ def webhook_update(request):
 
     signature = request.headers["X-Hub-Signature"]
     print(f"{signature=}")
+
+    try:
+        body_unicode = request.body.decode("utf-8")
+        body = json.loads(body_unicode)
+        content = body["content"]
+        print("*** >>> *** " + content)
+    except:
+        print("*** >>> *** no body")
 
     digest = "sha1=" + os.getenv("SECRET_TOKEN_FULL")
     print(f"{digest=}")
