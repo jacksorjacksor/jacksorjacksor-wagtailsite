@@ -1,5 +1,4 @@
-from django.http.response import HttpResponseBadRequest
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
 import git
 import subprocess
@@ -7,7 +6,7 @@ from django.core.mail import send_mail
 import os
 from dotenv import load_dotenv
 import hmac
-import json
+import hashlib
 
 load_dotenv()
 
@@ -38,38 +37,26 @@ def send_email_to_me(reason, line):
     )
 
 
-# Global var:
-repo = git.Repo("jacksorjacksor-wagtailsite")
-origin = repo.remote(name="origin")
-
 # @require_POST # This didn't work for some reason, but OK!
 @csrf_exempt
 def webhook_update(request):
-    print("********************************")
-    print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-    print("********************************")
-    print(f"{request.headers=}")
+    # AUTH: https://gist.github.com/grantmcconnaughey/6169d8b7a2e770e85c5617bc80ed00a9
     if not "X-Hub-Signature" in request.headers:
-        return HttpResponse("<h1>NO! SORRY!</h1>")
+        return HttpResponseForbidden("Invalid")
 
-    signature = request.headers["X-Hub-Signature"]
-    print(f"{signature=}")
+    github_signature = request.META["HTTP_X_HUB_SIGNATURE"]
+    signature = hmac.new(os.getenv("SECRET_TOKEN"), request.body, hashlib.sha1)
+    expected_signature = "sha1=" + signature.hexdigest()
 
-    try:
-        body_unicode = request.body
-        body = json.loads(body_unicode)
-        content = body["content"]
-        print("*** >>> *** " + content)
-    except:
-        print("*** >>> *** no body")
+    if not hmac.compare_digest(github_signature, expected_signature):
+        return HttpResponseForbidden("Invalid signature header")
 
-    digest = "sha1=" + os.getenv("SECRET_TOKEN_FULL")
-    print(f"{digest=}")
-    if not hmac.compare_digest(digest, signature):
-        return HttpResponse("<h1>NO! SORRY!</h1>")
-    print("*****AUTHDONE*******************")
-    print("********************************")
-    command = "git pull"  #
+    # CONTENT
+    # Global var:
+    repo = git.Repo("jacksorjacksor-wagtailsite")
+    origin = repo.remote(name="origin")
+
+    command = "git pull"
     try:
         print_running(command)
         origin.pull()
