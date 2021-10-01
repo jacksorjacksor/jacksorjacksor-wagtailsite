@@ -3,6 +3,7 @@ from django.http import request, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import git
 import subprocess
+import time
 
 ## UTIL FUNCTIONS
 def print_running(command):
@@ -45,6 +46,9 @@ def webhook_update(request):
         print_completed(command)
     except:
         print_issue(command)
+
+# Just doing this until I know the git pull actually works. This is just a theory.
+time.sleep(5)
 
     command = "restart server"
     try:
