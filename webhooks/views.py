@@ -79,6 +79,6 @@ def webhook_update(request):
         send_email_to_me(command)
         print_issue(command)
 
-    print("Done!")
+    print("Done!")  # final check
 
     return HttpResponse("<h1>Ah! You shouldn't be seeing this! How very rude!</h1>")
