@@ -62,7 +62,7 @@ origin = repo.remote(name="origin")
 def webhook_update(request):
     print("********************************")
     if not "X-Hub-Signature" in request.headers:
-        return HttpResponseBadRequest
+        return HttpResponse("<h1>NO! - X-Hub-Signature</h1>")
 
     signature = request.headers["X-Hub-Signature"]
     payload = request.data
@@ -76,7 +76,7 @@ def webhook_update(request):
     digest = "sha1=" + hmac_gen.hexdigest()
 
     if not hmac.compare_digest(digest, signature):
-        return HttpResponseBadRequest
+        return HttpResponse("<h1>NO! - compare digest</h1>")
     print("*****AUTHDONE*******************")
     print("********************************")
     # run_list_of_commands("git pull", ("origin.pull()", 'subprocess.run(["git", "status"])'))
