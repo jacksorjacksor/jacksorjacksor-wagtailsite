@@ -27,21 +27,6 @@ def print_issue(command):
     return None
 
 
-def run_list_of_commands(command, tuple_of_python_lines):
-    success = True
-    print_running(command)
-    for line in tuple_of_python_lines:
-        try:
-            exec(line)
-        except:
-            send_email_to_me(command, line)
-            success = False
-    if success:
-        print_completed(command)
-    else:
-        print_issue(command)
-
-
 def send_email_to_me(reason, line):
     send_mail(
         f"jacksorjacksor - site issue: {reason}",
@@ -59,7 +44,7 @@ origin = repo.remote(name="origin")
 # @require_POST # This didn't work for some reason, but OK!
 @csrf_exempt
 def webhook_update(request):
-    print("********************************")  # test
+    print("********************************")
     print("********************************")
     print("********************************")
     print(f"{request.headers=}")
@@ -68,16 +53,32 @@ def webhook_update(request):
 
     signature = request.headers["X-Hub-Signature"]
     print(f"{signature=}")
-    # create the hex digest and append prefix to match the GitHub request format
-    digest = "sha1=" + os.getenv("SECRET_TOKEN_FULL")  #
+
+    digest = "sha1=" + os.getenv("SECRET_TOKEN_FULL")
     print(f"{digest=}")
     if not hmac.compare_digest(digest, signature):
         return HttpResponse("<h1>NO! - compare digest</h1>")
     print("*****AUTHDONE*******************")
     print("********************************")
-    # run_list_of_commands("git pull", ("origin.pull()", 'subprocess.run(["git", "status"])'))
-    # run_list_of_commands("restart server", (subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])))
+    command = "git pull"
+    try:
+        print_running(command)
+        origin.pull()
+        subprocess.run(["git", "status"])
+        print_completed(command)
+    except:
+        send_email_to_me(command)
+        print_issue(command)
+
+    command = "restart server"
+    try:
+        print_running(command)
+        subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])
+        print_completed(command)
+    except:
+        send_email_to_me(command)
+        print_issue(command)
 
     print("Done!")
 
-    return HttpResponse("<h1>HI!</h1>")  # probably should have something else here...
+    return HttpResponse("<h1>Ah! You shouldn't be seeing this! How very rude!</h1>")
