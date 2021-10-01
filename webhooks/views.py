@@ -57,7 +57,7 @@ def webhook_update(request):
     try:
         print_running(command)
         # Database dump:
-        psql_command = "pg_restore --create --clean --host=jacksorjacksor-119.postgres.eu.pythonanywhere-services.com --port=10119 --no-password --file=database_dump --format=tar --username=jacksorjacksor"  # removed  --dbname=jacksorjacksor
+        psql_command = "pg_restore --create --clean --host=jacksorjacksor-119.postgres.eu.pythonanywhere-services.com --port=10119 --no-password --file=database_dump --format=directory --username=jacksorjacksor"  # removed  --dbname=jacksorjacksor & changed to dir
         psql_command_as_list = psql_command.split(" ")
         subprocess.run(psql_command_as_list)
         print_completed(command)
