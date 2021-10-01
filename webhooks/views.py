@@ -8,13 +8,14 @@ from django.core.mail import send_mail
 
 
 def send_email_to_me(reason):
-    send_mail(
-        f"jacksorjacksor - site issue: {reason}",
-        f"Issue with {reason}",
-        "rich@jacksorjacksor.xyz",
-        ["jacksorjacksor@pm.me"],
-        fail_silently=False,
-    )
+    pass
+    # send_mail(
+    #     f"jacksorjacksor - site issue: {reason}",
+    #     f"Issue with {reason}",
+    #     "rich@jacksorjacksor.xyz",
+    #     ["jacksorjacksor@pm.me"],
+    #     fail_silently=False,
+    # )
 
 
 ## UTIL FUNCTIONS
