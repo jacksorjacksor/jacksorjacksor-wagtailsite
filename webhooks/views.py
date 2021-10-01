@@ -68,12 +68,11 @@ def webhook_update(request):
         return HttpResponse("<h1>NO! - X-Hub-Signature</h1>")
 
     signature = request.headers["X-Hub-Signature"]
-    payload = request.data
 
     secret = os.getenv("SECRET_TOKEN").encode()  # must be encoded to a byte array
 
     # contruct hmac generator with our secret as key, and SHA-1 as the hashing function
-    hmac_gen = hmac.new(secret, payload, hashlib.sha1)
+    hmac_gen = hmac.new(secret, hashlib.sha1)
 
     # create the hex digest and append prefix to match the GitHub request format
     digest = "sha1=" + hmac_gen.hexdigest()  #
