@@ -18,4 +18,4 @@ repo.git.add(all=True)
 commit_message = input("Commit message: ")
 repo.git.commit("-m", commit_message)
 origin = repo.remote(name="origin")
-origin.push()  # and now
+origin.push()
