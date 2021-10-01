@@ -12,7 +12,8 @@ def webhook_update(request):
     origin = repo.remote(name="origin")
 
     try:
-        repo.git.stash("save")
+        repo.git.add(all=True)
+        repo.git.stash()
         repo.git.stash("drop")
     except:
         pass
