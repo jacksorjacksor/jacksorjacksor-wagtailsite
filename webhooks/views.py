@@ -61,6 +61,7 @@ origin = repo.remote(name="origin")
 @csrf_exempt
 def webhook_update(request):
     print("********************************")
+    print(f"{request.headers=}")
     if not "X-Hub-Signature" in request.headers:
         return HttpResponse("<h1>NO! - X-Hub-Signature</h1>")
 
