@@ -60,6 +60,7 @@ origin = repo.remote(name="origin")
 # @require_POST # This didn't work for some reason, but OK!
 @csrf_exempt
 def webhook_update(request):
+    print("********************************")
     if not "X-Hub-Signature" in request.headers:
         return HttpResponseBadRequest
 
@@ -76,9 +77,8 @@ def webhook_update(request):
 
     if not hmac.compare_digest(digest, signature):
         return HttpResponseBadRequest
-
-    os.getenv("SECRET_TOKEN")
-
+    print("*****AUTHDONE*******************")
+    print("********************************")
     run_list_of_commands("git pull", ("origin.pull()", 'subprocess.run(["git", "status"])'))
     run_list_of_commands("restart server", (subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])))
 
