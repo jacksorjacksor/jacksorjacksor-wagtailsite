@@ -69,7 +69,7 @@ def webhook_update(request):
         return HttpResponse("<h1>NO! SORRY!</h1>")
     print("*****AUTHDONE*******************")
     print("********************************")
-    command = "git pull"
+    command = "git pull"  #
     try:
         print_running(command)
         origin.pull()
