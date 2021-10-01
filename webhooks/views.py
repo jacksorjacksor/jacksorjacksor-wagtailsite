@@ -61,22 +61,22 @@ origin = repo.remote(name="origin")
 @csrf_exempt
 def webhook_update(request):
     print("********************************")
-    # if not "X-Hub-Signature" in request.headers:
-    #     return HttpResponseBadRequest
+    if not "X-Hub-Signature" in request.headers:
+        return HttpResponseBadRequest
 
-    # signature = request.headers["X-Hub-Signature"]
-    # payload = request.data
+    signature = request.headers["X-Hub-Signature"]
+    payload = request.data
 
-    # secret = os.getenv("SECRET_TOKEN").encode()  # must be encoded to a byte array
+    secret = os.getenv("SECRET_TOKEN").encode()  # must be encoded to a byte array
 
-    # # contruct hmac generator with our secret as key, and SHA-1 as the hashing function
-    # hmac_gen = hmac.new(secret, payload, hashlib.sha1)
+    # contruct hmac generator with our secret as key, and SHA-1 as the hashing function
+    hmac_gen = hmac.new(secret, payload, hashlib.sha1)
 
-    # # create the hex digest and append prefix to match the GitHub request format
-    # digest = "sha1=" + hmac_gen.hexdigest()
+    # create the hex digest and append prefix to match the GitHub request format
+    digest = "sha1=" + hmac_gen.hexdigest()
 
-    # if not hmac.compare_digest(digest, signature):
-    #     return HttpResponseBadRequest
+    if not hmac.compare_digest(digest, signature):
+        return HttpResponseBadRequest
     print("*****AUTHDONE*******************")
     print("********************************")
     # run_list_of_commands("git pull", ("origin.pull()", 'subprocess.run(["git", "status"])'))
