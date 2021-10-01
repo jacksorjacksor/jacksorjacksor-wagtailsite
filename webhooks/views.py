@@ -6,7 +6,7 @@ import subprocess
 
 ## UTIL FUNCTIONS
 def print_running(command):
-    print(f"running {command}")
+    print(f">>> running {command}")
     return None
 
 
@@ -57,7 +57,7 @@ def webhook_update(request):
     try:
         print_running(command)
         # Database dump:
-        psql_command = "pg_restore --create --clean --host=jacksorjacksor-119.postgres.eu.pythonanywhere-services.com --port=10119 --no-password --file=database_dump --format=tar --username=jacksorjacksor --dbname=jacksorjacksor"
+        psql_command = "pg_restore --create --clean --host=jacksorjacksor-119.postgres.eu.pythonanywhere-services.com --port=10119 --no-password --file=database_dump --format=tar --username=jacksorjacksor"  # removed  --dbname=jacksorjacksor
         psql_command_as_list = psql_command.split(" ")
         subprocess.run(psql_command_as_list)
         print_completed(command)
@@ -77,6 +77,3 @@ def webhook_update(request):
     print("Done!")
 
     return HttpResponse("<h1>HI!</h1>")  # probably should have something else here...
-
-
-import subprocess
