@@ -49,7 +49,7 @@ def webhook_update(request):
     print("********************************")
     print(f"{request.headers=}")
     if not "X-Hub-Signature" in request.headers:
-        return HttpResponse("<h1>NO! - X-Hub-Signature</h1>")
+        return HttpResponseBadRequest
 
     signature = request.headers["X-Hub-Signature"]
     print(f"{signature=}")
@@ -57,7 +57,7 @@ def webhook_update(request):
     digest = "sha1=" + os.getenv("SECRET_TOKEN_FULL")
     print(f"{digest=}")
     if not hmac.compare_digest(digest, signature):
-        return HttpResponse("<h1>NO! - compare digest</h1>")
+        return HttpResponseBadRequest
     print("*****AUTHDONE*******************")
     print("********************************")
     command = "git pull"
