@@ -37,7 +37,9 @@ def send_email_to_me(reason, line):
     )
 
 
-# @require_POST # This didn't work for some reason, but OK!
+# Last attempt before not doing this anymore
+
+
 @csrf_exempt
 def webhook_update(request):
     # AUTH: https://gist.github.com/grantmcconnaughey/6169d8b7a2e770e85c5617bc80ed00a9
