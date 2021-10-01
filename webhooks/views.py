@@ -79,8 +79,8 @@ def webhook_update(request):
     #     return HttpResponseBadRequest
     print("*****AUTHDONE*******************")
     print("********************************")
-    run_list_of_commands("git pull", ("origin.pull()", 'subprocess.run(["git", "status"])'))
-    run_list_of_commands("restart server", (subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])))
+    # run_list_of_commands("git pull", ("origin.pull()", 'subprocess.run(["git", "status"])'))
+    # run_list_of_commands("restart server", (subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])))
 
     print("Done!")
 
