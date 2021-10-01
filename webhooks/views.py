@@ -46,7 +46,7 @@ origin = repo.remote(name="origin")
 @csrf_exempt
 def webhook_update(request):
     print("********************************")
-    print("********************************")
+    print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
     print("********************************")
     print(f"{request.headers=}")
     if not "X-Hub-Signature" in request.headers:
@@ -56,7 +56,7 @@ def webhook_update(request):
     print(f"{signature=}")
 
     try:
-        body_unicode = request.body.decode("utf-8")
+        body_unicode = request.body
         body = json.loads(body_unicode)
         content = body["content"]
         print("*** >>> *** " + content)
