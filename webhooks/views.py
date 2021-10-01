@@ -3,7 +3,6 @@ from django.http import request, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import git
 import subprocess
-import os
 from django.core.mail import send_mail
 
 
