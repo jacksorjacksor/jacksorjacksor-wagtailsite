@@ -31,11 +31,19 @@ def webhook_update(request):
     try:
         # Database dump:
         psql_command = "pg_restore --create --clean --host=jacksorjacksor-119.postgres.eu.pythonanywhere-services.com --port=10119 --no-password --file=database_dump --format=tar --username=jacksorjacksor --dbname=jacksorjacksor"
-
         psql_command_as_list = psql_command.split(" ")
         subprocess.run(psql_command_as_list)
     except:
         print("Database issues")
+
+    # Collect Static
+    try:
+        command = "cd /home/jacksorjacksor/jacksorjacksor-wagtailsite && workon wagtail && python manage.py collectstatic --noinput"
+        command_as_list = command.split(" ")
+        subprocess.run(command_as_list)
+
+    except:
+        print("Collect static issue")
 
     return HttpResponse("<h1>HI!</h1>")  # probably should have something else here...
 
