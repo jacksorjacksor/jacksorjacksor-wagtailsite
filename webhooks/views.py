@@ -59,7 +59,7 @@ origin = repo.remote(name="origin")
 # @require_POST # This didn't work for some reason, but OK!
 @csrf_exempt
 def webhook_update(request):
-    print("********************************")
+    print("********************************")  # test
     print("********************************")
     print("********************************")
     print(f"{request.headers=}")
