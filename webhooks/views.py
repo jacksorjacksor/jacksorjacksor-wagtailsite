@@ -1,9 +1,15 @@
-from django.shortcuts import render
-from django.http import request, HttpResponse
+from django.http.response import HttpResponseBadRequest
+from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import git
 import subprocess
 from django.core.mail import send_mail
+import os
+from dotenv import load_dotenv
+import hmac
+import hashlib
+
+load_dotenv()
 
 
 ## UTIL FUNCTIONS
@@ -54,6 +60,25 @@ origin = repo.remote(name="origin")
 # @require_POST # This didn't work for some reason, but OK!
 @csrf_exempt
 def webhook_update(request):
+    if not "X-Hub-Signature" in request.headers:
+        return HttpResponseBadRequest
+
+    signature = request.headers["X-Hub-Signature"]
+    payload = request.data
+
+    secret = os.getenv("SECRET_TOKEN").encode()  # must be encoded to a byte array
+
+    # contruct hmac generator with our secret as key, and SHA-1 as the hashing function
+    hmac_gen = hmac.new(secret, payload, hashlib.sha1)
+
+    # create the hex digest and append prefix to match the GitHub request format
+    digest = "sha1=" + hmac_gen.hexdigest()
+
+    if not hmac.compare_digest(digest, signature):
+        return HttpResponseBadRequest
+
+    os.getenv("SECRET_TOKEN")
+
     run_list_of_commands("git pull", ("origin.pull()", 'subprocess.run(["git", "status"])'))
     run_list_of_commands("restart server", (subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])))
 
