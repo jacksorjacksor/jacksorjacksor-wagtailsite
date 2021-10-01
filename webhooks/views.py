@@ -3,6 +3,7 @@ from django.http import request, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import git
 import subprocess
+import os
 from django.core.mail import send_mail
 
 
@@ -73,23 +74,43 @@ def webhook_update(request):
         send_email_to_me("git pull")
         print_issue(command)
 
-    command = "restart server"
+    # database_restore()
+    # Removed this as would wipe out existing materials
+
+    command = "activate venv"
     try:
         print_running(command)
-        subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])
+        run_static_command = "source /home/jacksorjacksor/.virtualenvs/wagtail/bin/activate"
+        run_static_command_as_list = run_static_command.split(" ")
+        subprocess.run(run_static_command_as_list)
         print_completed(command)
     except:
         print_issue(command)
 
-    # database_restore()
-    # Removed this as would wipe out existing materials
-
-    command = "collectstatic"
+    command = "check django"
     try:
         print_running(command)
-        run_static_command = "source /home/jacksorjacksor/.virtualenvs/wagtail/bin/activate && cd /home/jacksorjacksor/jacksorjacksor-wagtailsite && python manage.py collectstatic --noinput"
+        run_static_command = "python ~/wagtail/jacksorjacksor-wagtailsite/manage.py check"
         run_static_command_as_list = run_static_command.split(" ")
         subprocess.run(run_static_command_as_list)
+        print_completed(command)
+    except:
+        print_issue(command)
+
+    command = "activate venv"
+    try:
+        print_running(command)
+        run_static_command = "python ~/wagtail/jacksorjacksor-wagtailsite/manage.py collectstatic --noinput"
+        run_static_command_as_list = run_static_command.split(" ")
+        subprocess.run(run_static_command_as_list)
+        print_completed(command)
+    except:
+        print_issue(command)
+
+    command = "restart server"
+    try:
+        print_running(command)
+        subprocess.run(["touch", "/var/www/www_jacksorjacksor_xyz_wsgi.py"])
         print_completed(command)
     except:
         print_issue(command)
