@@ -39,7 +39,6 @@ def send_email_to_me(reason):
 
 
 # FYI we're totally going to have to just use the more secure package
-# @require_POST # This didn't work for some reason, but OK!
 @csrf_exempt
 def webhook_update(request):
     # AUTH: https://gist.github.com/grantmcconnaughey/6169d8b7a2e770e85c5617bc80ed00a9
@@ -60,10 +59,11 @@ def webhook_update(request):
         return HttpResponseBadRequest("Invalid X-HUB-SIGNATURE header found")
 
     # CONTENT
-    # Global var:
+    # Global vars:
     repo = git.Repo("jacksorjacksor-wagtailsite")
     origin = repo.remote(name="origin")
 
+    # Commands
     command = "git pull"
     try:
         print_running(command)
