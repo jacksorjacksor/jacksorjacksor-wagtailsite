@@ -58,28 +58,6 @@ def webhook_update(request):
     if not hmac.compare_digest(mac.hexdigest(), signature):
         return HttpResponseBadRequest("Invalid X-HUB-SIGNATURE header found")
 
-    # event = request.META["HTTP_X_GITHUB_EVENT"]
-
-    # if "payload" in request.POST:
-    #     payload = json.loads(request.POST["payload"])
-    # else:
-    #     payload = json.loads(request.body)
-
-    # print(f"{payload=}")
-
-    # secret_token = os.getenv("SECRET_TOKEN")
-
-    # secret_token_utf8 = secret_token.encode()
-
-    # signature = hmac.new(secret_token_utf8, payload, hashlib.sha1)
-
-    # github_signature = request.META["HTTP_X_HUB_SIGNATURE"]
-    # # signature = hmac.new(os.getenv("SECRET_TOKEN"), request.body, hashlib.sha1)
-    # expected_signature = "sha1=" + signature.hexdigest()
-
-    # if not hmac.compare_digest(github_signature, expected_signature):
-    #     return HttpResponseForbidden("Invalid signature header")
-
     # CONTENT
     # Global var:
     repo = git.Repo("jacksorjacksor-wagtailsite")
