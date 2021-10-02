@@ -38,6 +38,7 @@ def send_email_to_me(reason):
     )
 
 
+# FYI we're totally going to have to just use the more secure package
 # @require_POST # This didn't work for some reason, but OK!
 @csrf_exempt
 def webhook_update(request):
