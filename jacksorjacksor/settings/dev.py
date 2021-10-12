@@ -28,3 +28,5 @@ DATABASES = {
         "PORT": os.getenv("LOCAL_PORT"),  ###
     }
 }
+
+# print(DATABASES["default"])

@@ -662,6 +662,10 @@ header .main-title a:hover {
   margin-bottom: 2rem;
 }
 
+.streamfield-paragraph {
+  padding: 1rem;
+}
+
 @media screen and (max-height: 400px) {
   .navigation .left-hand-jacksorjacksor-logo,
   .mailing-list-menu-item {
