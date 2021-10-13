@@ -8,4 +8,13 @@ repo.git.commit("-m", commit_message)
 origin = repo.remote(name="origin")
 origin.push()
 
+
+# Remotely request the collectstatic (will this interfere with the git pull?)
+from fabric import Connection
+
+result = Connection("jacksorjacksor@ssh.eu.pythonanywhere.com").run(
+    "workon wagtail && cd jacksorjacksor-wagtailsite && git pull && python manage.py collectstatic --noinput"
+)
+
+
 # TODO: separate "push DB" function - not automatically though!
