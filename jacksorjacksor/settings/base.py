@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     "typing_extensions",
     "generic_page",
     "contact",
-    "webhooks",
+    # "webhooks",
     "wagtail.contrib.routable_page",
     "wagtail.contrib.modeladmin",
     "wagtailmenus",
