@@ -41,11 +41,11 @@ if args.remote or not args.local:
 
     if not args.nopip:
         result = Connection("jacksorjacksor@ssh.eu.pythonanywhere.com").run(
-            "workon wagtail && cd jacksorjacksor-wagtailsite && git pull && pip install -r requirements.txt"
+            "workon wagtail && cd jacksorjacksor-wagtailsite && pip install -r requirements.txt"
         )
 
     result = Connection("jacksorjacksor@ssh.eu.pythonanywhere.com").run(
-        "workon wagtail && cd jacksorjacksor-wagtailsite && git pull && python manage.py migrate"
+        "workon wagtail && cd jacksorjacksor-wagtailsite && python manage.py migrate"
     )
 
     result = Connection("jacksorjacksor@ssh.eu.pythonanywhere.com").run("touch /var/www/www_jacksorjacksor_xyz_wsgi.py")
