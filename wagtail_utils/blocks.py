@@ -34,7 +34,8 @@ class BodyBlock(StreamBlock):
     h1 = CharBlock()
     h2 = CharBlock()
     paragraph = RichTextBlock()
-
+    youtube_embed = EmbedBlock(max_width=560, max_height=315)
     image_text = ImageText()
+    raw_code = RawHTMLBlock()
     image_carousel = ListBlock(ImageChooserBlock())
     thumbnail_gallery = ListBlock(ImageChooserBlock())

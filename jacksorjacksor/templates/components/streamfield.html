@@ -1,4 +1,5 @@
-{% load static wagtailcore_tags %}
+{% load static wagtailcore_tags wagtailembeds_tags %}
+<h1>HHHHHIIIIII</h1>
 <div class="detail-body-container">
     {% with blocks=page.body %}
         {% for block in blocks %}
@@ -12,6 +13,10 @@
                 {% include 'components/streamfield_components/image_text.html' with block=block only %}
             {% elif block.block_type == 'image_carousel' %}
                 {% include 'components/streamfield_components/image_carousel.html' with block=block only %}
+            {% elif block.block_type == 'youtube_embed' %}
+                <div class="youtube_embed">{{ block }}</div>
+            {% elif block.block_type == 'raw_code' %}
+                <div class="raw_code">{{ block }}</div>
             {% else %}
                 <section class="block-{{ block.block_type }}">
                     {{ block }}
