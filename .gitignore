@@ -11,3 +11,4 @@ docs/*
 python_anywhere_api.py
 .env
 fabfile.py
+manage.py
