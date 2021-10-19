@@ -7,7 +7,7 @@ psql_help.md
 todays_goals.md
 db_instructions.md
 db_instructions.md
-docs/*
+_docs/*
 python_anywhere_api.py
 .env
 fabfile.py
