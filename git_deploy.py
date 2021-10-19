@@ -35,18 +35,26 @@ if args.local or not args.remote:
 
 if args.remote or not args.local:
     print("REMOTE")
-    # Remotely request the collectstatic (will this interfere with the git pull?)
+    # GIT PULL
     result = Connection("jacksorjacksor@ssh.eu.pythonanywhere.com").run(
-        "workon wagtail && cd jacksorjacksor-wagtailsite && git pull && python manage.py collectstatic --noinput"
+        "workon wagtail && cd jacksorjacksor-wagtailsite && git pull"
     )
 
+    # COLLECT STATIC (needed for any CSS change)
+    result = Connection("jacksorjacksor@ssh.eu.pythonanywhere.com").run(
+        "workon wagtail && cd jacksorjacksor-wagtailsite && python manage.py collectstatic --noinput"
+    )
+
+    # PIP INSTALL -R REQUIREMENTS
     if not args.nopip:
         result = Connection("jacksorjacksor@ssh.eu.pythonanywhere.com").run(
             "workon wagtail && cd jacksorjacksor-wagtailsite && pip install -r requirements.txt"
         )
 
+    # PYTHON MANAGE.PY MIGRATE
     result = Connection("jacksorjacksor@ssh.eu.pythonanywhere.com").run(
         "workon wagtail && cd jacksorjacksor-wagtailsite && python manage.py migrate"
     )
 
+    # TOUCH WSGI (restarts the server)
     result = Connection("jacksorjacksor@ssh.eu.pythonanywhere.com").run("touch /var/www/www_jacksorjacksor_xyz_wsgi.py")
