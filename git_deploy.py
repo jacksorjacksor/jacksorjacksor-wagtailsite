@@ -6,6 +6,7 @@ from fabric import Connection
 This script works on both the LOCAL and REMOTE computers to synchronise git repos & static files
 LOCAL: runs git add/commit/push
 REMOTE: runs git pull & python manage.py collectstatic & requirements
+>> python manage.py migrate should work now
 """
 
 # COMMAND LINE SETTINGS
