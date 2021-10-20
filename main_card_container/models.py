@@ -145,7 +145,7 @@ class DetailPage(Page):
 class DetailPageCategory(models.Model):
     page = ParentalKey("main_card_container.DetailPage", on_delete=models.CASCADE, related_name="categories")
     category = models.ForeignKey(
-        "main_card_container.Category", on_delete=models.CASCADE, related_name="category", blank="False", null="False"
+        "main_card_container.Category", on_delete=models.CASCADE, related_name="category", blank="True", null="True"
     )
 
     panels = [SnippetChooserPanel("category")]
